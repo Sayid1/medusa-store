@@ -17,40 +17,35 @@ const StockAndInventory = () => {
   }))
 
   return (
-    <BodyCard
-      title="Stock & Inventory"
-      subtitle="To start selling, all you need is a name, price, and image"
-    >
+    <BodyCard title="库存" subtitle="要开始销售，您只需要名称、价格和图片">
       <div className="mt-large">
         {!isVariantsView && (
           <>
             <div className="flex items-center mb-base">
-              <h6 className="inter-base-semibold text-grey-90 mr-1.5">
-                General
-              </h6>
+              <h6 className="inter-base-semibold text-grey-90 mr-1.5">概要</h6>
             </div>
             <div className="grid grid-cols-2 gap-x-8 gap-y-4 mb-large">
               <Input
-                label="Stock Keeping Unit (SKU)"
+                label="库存单位 (SKU)"
                 name="sku"
                 placeholder="SUN-G, JK1234..."
                 ref={register}
               />
               <Input
-                label="Barcode (EAN)"
+                label="商品条码 (EAN)"
                 name="ean"
                 placeholder="1231231231234..."
                 ref={register}
               />
               <Input
-                label="Quantity in stock"
+                label="库存数量"
                 name="inventory_quantity"
                 type="number"
                 placeholder="100"
                 ref={register({ setValueAs: numberOrNull })}
               />
               <Input
-                label="Material"
+                label="材质"
                 name="material"
                 ref={register}
                 placeholder="Wool..."
@@ -63,39 +58,31 @@ const StockAndInventory = () => {
             <div className="flex item-center gap-x-1.5">
               <Checkbox
                 name="manage_inventory"
-                label="Manage Inventory"
+                label="管理库存"
                 ref={register}
               />
-              <IconTooltip
-                content={
-                  "When checked Medusa will regulate the inventory when orders and returns are made."
-                }
-              />
+              <IconTooltip content={"选中后，我们将在订单和退货时调节库存。"} />
             </div>
             <div className="flex item-center gap-x-1.5">
               <Checkbox
                 name="allow_backorder"
                 ref={register}
-                label="Allow backorders"
+                label="允许延期交货"
               />
               <IconTooltip
-                content={
-                  "When checked the product will be available for purchase despite the product being sold out."
-                }
+                content={"选中后，尽管产品已售罄，但仍可购买该产品。"}
               />
             </div>
           </div>
         )}
         <div className="flex items-center mb-base">
-          <h6 className="inter-base-semibold text-grey-90 mr-1.5">
-            Dimensions
-          </h6>
+          <h6 className="inter-base-semibold text-grey-90 mr-1.5">详情</h6>
         </div>
         <div className="flex gap-x-8">
           <div className="flex-1 grid grid-cols-2 gap-x-2 gap-y-4 mb-large">
             <Input
               type="number"
-              label="Height"
+              label="高度"
               name="height"
               ref={register({ setValueAs: numberOrNull })}
               min={0}
@@ -103,7 +90,7 @@ const StockAndInventory = () => {
             />
             <Input
               type="number"
-              label="Width"
+              label="宽度"
               name="width"
               ref={register({ setValueAs: numberOrNull })}
               placeholder="100..."
@@ -111,7 +98,7 @@ const StockAndInventory = () => {
             />
             <Input
               type="number"
-              label="Length"
+              label="长度"
               name="length"
               ref={register({ setValueAs: numberOrNull })}
               placeholder="100..."
@@ -119,7 +106,7 @@ const StockAndInventory = () => {
             />
             <Input
               type="number"
-              label="Weight"
+              label="重量"
               name="weight"
               ref={register({ setValueAs: numberOrNull })}
               placeholder="100..."
@@ -128,13 +115,13 @@ const StockAndInventory = () => {
           </div>
           <div className="flex-1 grid grid-cols-2 gap-x-2 gap-y-4 mb-large">
             <Input
-              label="MID Code"
+              label="MID码"
               name="mid_code"
               ref={register}
               placeholder="100..."
             />
             <Input
-              label="HS Code"
+              label="HS码"
               name="hs_code"
               ref={register}
               placeholder="100..."
@@ -146,8 +133,8 @@ const StockAndInventory = () => {
                 return (
                   <Select
                     enableSearch
-                    label="Country of origin"
-                    placeholder="Select a country"
+                    label="原产国"
+                    placeholder="选择国家/地区"
                     options={countryOptions}
                     value={value}
                     onChange={onChange}

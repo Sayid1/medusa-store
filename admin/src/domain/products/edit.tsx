@@ -48,7 +48,7 @@ const EditProductPage = ({ id }) => {
         })
         .catch((err) => {
           setSubmitting(false)
-          notification("Error uploading images", getErrorMessage(err), "error")
+          notification("上传图片失败", getErrorMessage(err), "error")
           return
         })
     }
@@ -63,11 +63,11 @@ const EditProductPage = ({ id }) => {
       {
         onSuccess: () => {
           setSubmitting(false)
-          notification("Success", "Product updated successfully", "success")
+          notification("成功", "产品修改成功", "success")
         },
         onError: (error) => {
           setSubmitting(false)
-          notification("Error", getErrorMessage(error), "error")
+          notification("失败", getErrorMessage(error), "error")
         },
       }
     )
@@ -137,10 +137,10 @@ const UpdateNotification = ({ isLoading = false }) => {
           <FormToasterContainer.ActionButton
             onClick={handleSubmit(onUpdate, handleFormError)}
           >
-            Save
+            保存
           </FormToasterContainer.ActionButton>
           <FormToasterContainer.DiscardButton onClick={resetForm}>
-            Discard
+            撤销
           </FormToasterContainer.DiscardButton>
         </FormToasterContainer.Actions>
       </FormToasterContainer>

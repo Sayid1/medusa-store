@@ -40,8 +40,17 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || ''
 
 // This is the place to include plugins. See API documentation for a thorough guide on plugins.
 const plugins = [
-    `medusa-fulfillment-manual`,
-    `medusa-payment-manual`,
+    // `medusa-fulfillment-manual`,
+    // `medusa-payment-manual`,
+    // {
+    //     resolve: `medusa-file-minio`,
+    //     options: {
+    //         endpoint: process.env.MINIO_ENDPOINT,
+    //         bucket: process.env.MINIO_BUCKET,
+    //         access_key_id: process.env.MINIO_ACCESS_KEY,
+    //         secret_access_key: process.env.MINIO_SECRET_KEY,
+    //     },
+    // },
     // Uncomment to add Stripe support.
     // You can create a Stripe account via: https://stripe.com
     // {
@@ -64,5 +73,5 @@ module.exports = {
         store_cors: STORE_CORS,
         admin_cors: ADMIN_CORS,
     },
-    plugins,
+    // plugins,
 }

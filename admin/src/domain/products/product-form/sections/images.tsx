@@ -8,7 +8,7 @@ import { useProductForm } from "../form/product-form-context"
 
 const columns = [
   {
-    Header: "Image",
+    Header: "图片",
     accessor: "image",
     Cell: ({ cell }) => {
       return (
@@ -22,7 +22,7 @@ const columns = [
     },
   },
   {
-    Header: "File Name",
+    Header: "文件名称",
     accessor: "name",
     Cell: ({ cell }) => {
       return (
@@ -38,7 +38,7 @@ const columns = [
     },
   },
   {
-    Header: <div className="text-center">Thumbnail</div>,
+    Header: <div className="text-center">缩略图</div>,
     accessor: "thumbnail",
     Cell: ({ cell }) => {
       return (
@@ -63,7 +63,7 @@ const Images = () => {
   } = useProductForm()
 
   return (
-    <BodyCard title="Images" subtitle="Add up to 10 images to your product">
+    <BodyCard title="图片" subtitle="最多为您的产品添加 10 张图片">
       <div className="mt-base">
         <Controller
           name="thumbnail"
@@ -99,7 +99,7 @@ const Images = () => {
               nativeFile: file,
             })
           }}
-          placeholder="1200 x 1600 (3:4) recommended, up to 10MB each"
+          placeholder="推荐 1200 x 1600 (3:4)，每个最大 10MB"
           filetypes={["png", "jpg", "jpeg"]}
           className="py-large"
         />

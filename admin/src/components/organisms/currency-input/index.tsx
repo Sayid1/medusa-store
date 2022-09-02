@@ -124,7 +124,7 @@ const CurrencyInput: React.FC<CurrencyInputProps> & {
             {!readOnly ? (
               <Select
                 enableSearch
-                label="Currency"
+                label="货币"
                 value={value}
                 onChange={onCurrencyChange}
                 options={options}
@@ -132,7 +132,7 @@ const CurrencyInput: React.FC<CurrencyInputProps> & {
               />
             ) : (
               <Input
-                label="Currency"
+                label="货币"
                 value={value?.label}
                 readOnly
                 className="pointer-events-none"
@@ -223,7 +223,7 @@ const AmountInput: React.FC<AmountInputProps> = ({
           <Tooltip
             open={invalid}
             side={"top"}
-            content={invalidMessage || "Amount is not valid"}
+            content={invalidMessage || "金额无效"}
           >
             <span className="inter-base-regular text-grey-40 mr-xsmall">
               {currencyInfo.symbol_native}

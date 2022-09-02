@@ -277,7 +277,7 @@ export const TablePagination = ({
         className
       )}
     >
-      <div>{`${soothedOffset} - ${pageSize} of ${count} ${title}`}</div>
+      <div>{`${soothedOffset} - ${pageSize}条， 共${count}条${title}`}</div>
       <div className="flex space-x-4">
         <div>{`${currentPage} of ${soothedPageCount}`}</div>
         <div className="flex space-x-4 items-center">

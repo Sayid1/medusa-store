@@ -354,7 +354,7 @@ export const useProductFilters = (
   const availableTabs = useMemo(() => {
     return [
       {
-        label: "Unpublished",
+        label: "未发布的",
         value: "drafts",
       },
       ...tabs,

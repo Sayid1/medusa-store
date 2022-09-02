@@ -26,7 +26,7 @@ const Shipping: React.FC<ShippingProps> = ({ region }) => {
   const outboundOptions = [
     {
       icon: <PlusIcon />,
-      label: "Add Option",
+      label: "添加选项",
       onClick: () => setAddOption(true),
     },
   ]
@@ -55,7 +55,7 @@ const Shipping: React.FC<ShippingProps> = ({ region }) => {
     <>
       <div className="mb-2xlarge">
         <div className="flex items-center justify-between mb-base">
-          <h2 className="inter-base-semibold">Shipping Options</h2>
+          <h2 className="inter-base-semibold">运输选项</h2>
           <Actionables actions={outboundOptions} />
         </div>
         <div className="flex flex-col">
@@ -84,7 +84,7 @@ const Shipping: React.FC<ShippingProps> = ({ region }) => {
       </div>
       <div>
         <div className="flex items-center justify-between mb-base">
-          <h2 className="inter-base-semibold">Return Shipping Options</h2>
+          <h2 className="inter-base-semibold">退货运输选项</h2>
           <Actionables actions={inboundDropdownOptions} />
         </div>
         <div className="flex flex-col">

@@ -1,4 +1,5 @@
 import { MedusaProvider } from "medusa-react"
+import { ClickToComponent } from "click-to-react-component"
 import React from "react"
 import "./src/assets/styles/emoji-picker.css"
 import "./src/assets/styles/global.css"
@@ -18,6 +19,7 @@ export const wrapPageElement = ({ element }) => {
         client: queryClient,
       }}
     >
+      <ClickToComponent />
       <CacheProvider>
         <AccountProvider>
           <FeatureFlagProvider>

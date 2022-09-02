@@ -30,7 +30,7 @@ const ExportModal: React.FC<ExportModalProps> = ({
             overview.
           </div> */}
           <div className="flex mb-4 inter-small-regular text-grey-50">
-            Initialize an export of your data
+            初始化数据的导出
           </div>
         </Modal.Content>
         <Modal.Footer>

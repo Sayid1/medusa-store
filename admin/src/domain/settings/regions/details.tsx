@@ -158,10 +158,10 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully updated region", "success")
+          notification("成功", "成功修改地区", "success")
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("错误", getErrorMessage(error), "error")
         },
       }
     )
@@ -174,7 +174,7 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
 
   const handleDuplicate = () => {
     if (!region) {
-      notification("Error", "Region not found", "error")
+      notification("错误", "未找到地区", "error")
       return
     }
 
@@ -189,11 +189,11 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
 
     createRegion.mutate(payload, {
       onSuccess: ({ region }) => {
-        notification("Success", "Successfully duplicated region", "success")
+        notification("成功", "Successfully duplicated region", "success")
         handleSelect(region.id)
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("错误", getErrorMessage(error), "error")
       },
     })
   }
@@ -206,7 +206,7 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
         }
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("错误", getErrorMessage(error), "error")
       },
     })
   }
@@ -228,12 +228,12 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
         events={[{ label: "Save", onClick: handleSubmit(onSave) }]}
         actionables={[
           {
-            label: "Duplicate Region",
+            label: "重复地区",
             onClick: handleDuplicate,
             icon: <DuplicateIcon />,
           },
           {
-            label: "Delete Region",
+            label: "删除地区",
             onClick: () => setShowDanger(true),
             icon: <TrashIcon />,
             variant: "danger",
@@ -252,8 +252,8 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
               <div className="w-full">
                 <Input
                   name="name"
-                  label="Name"
-                  placeholder="Region name..."
+                  label="名称"
+                  placeholder="地区名称..."
                   ref={register({ required: true })}
                   className="mb-base"
                 />
@@ -266,7 +266,7 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
                 <Select
                   isMultiSelect
                   enableSearch
-                  label="Countries"
+                  label="国家"
                   hasSelectAll
                   options={countryOptions}
                   value={countries}
@@ -279,7 +279,7 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
                     onChange={handlePaymentChange}
                     options={paymentOptions}
                     value={paymentProviders}
-                    label="Payment Providers"
+                    label="支付提供商"
                     enableSearch
                     className="mb-base"
                   />
@@ -289,7 +289,7 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
                     onChange={handleFulfillmentChange}
                     options={fulfillmentOptions}
                     value={fulfillmentProviders}
-                    label="Fulfillment Providers"
+                    label="履约提供商"
                     enableSearch
                     isMultiSelect
                   />
@@ -307,11 +307,11 @@ const RegionDetails = ({ id, onDelete, handleSelect }) => {
       {showDanger && (
         <DeletePrompt
           handleClose={() => setShowDanger(!showDanger)}
-          text="Are you sure you want to delete this region from your Medusa Store?"
-          heading="Delete region"
+          text="您确定要从您的商店中删除该地区吗？"
+          heading="删除地区"
           onDelete={handleDelete}
-          successText="Successfully deleted region"
-          confirmText="Yes, delete"
+          successText="已成功删除区域"
+          confirmText="确认"
         />
       )}
     </>

@@ -56,10 +56,10 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
         <Modal.Header handleClose={onClose}>
           <div>
             <h1 className="inter-xlarge-semibold mb-2xsmall">
-              {isEdit ? "Edit Collection" : "Add Collection"}
+              {isEdit ? "修改分类" : "添加分类"}
             </h1>
             <p className="inter-small-regular text-grey-50">
-              To create a collection, all you need is a title and a handle.
+              要创建一个分类，您只需要一个标题和一个唯一标识。
             </p>
           </div>
         </Modal.Header>
@@ -69,19 +69,19 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
               <h2 className="inter-base-semibold mb-base">Details</h2>
               <div className="flex items-center gap-x-base">
                 <InputField
-                  label="Title"
+                  label="标题"
                   required
                   placeholder="Sunglasses"
                   name="title"
                   ref={register({ required: true })}
                 />
                 <InputField
-                  label="Handle"
+                  label="唯一标识"
                   placeholder="sunglasses"
                   name="handle"
                   prefix="/"
                   tooltip={
-                    <IconTooltip content="URL Slug for the product. Will be auto generated if left blank." />
+                    <IconTooltip content="产品的 URL Slug。 如果留空，将自动生成。" />
                   }
                   ref={register}
                 />
@@ -99,10 +99,10 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
                 type="button"
                 onClick={onClose}
               >
-                Cancel
+                取消
               </Button>
               <Button variant="primary" size="small">
-                {`${isEdit ? "Save" : "Publish"} collection`}
+                {`${isEdit ? "保存" : "发布"} 分类`}
               </Button>
             </div>
           </Modal.Footer>

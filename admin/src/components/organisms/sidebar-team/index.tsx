@@ -103,7 +103,7 @@ const SidebarTeam: React.FC = () => {
   return (
     <div className="h-72 border-b border-grey-20">
       <div className="flex items-center justify-between">
-        <span className="text-grey-50 ">Your team</span>
+        <span className="text-grey-50 ">您的团队</span>
         <div className="flex stroke-grey-50">
           <PaginationArrows
             handleNextPage={nextPage}
@@ -125,7 +125,7 @@ const SidebarTeam: React.FC = () => {
         <div className="w-[24px] h-[24px]  bg-violet-20 text-violet-60 rounded-full text-center flex justify-center items-center text-violet-60">
           <PlusIcon size={16} />
         </div>
-        <span className="ml-2.5">Invite your team</span>
+        <span className="ml-2.5">邀请您的团队</span>
       </div>
       {isOpen && <InviteModal handleClose={() => setIsOpen(false)} />}
     </div>

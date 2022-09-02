@@ -9,8 +9,8 @@ const DeleteDialog = ({
   text,
   onConfirm,
   onCancel,
-  confirmText = "Yes, confirm",
-  cancelText = "Cancel",
+  confirmText = "确认",
+  cancelText = "取消",
 }) => {
   return (
     <Modal open={open} handleClose={onCancel}>

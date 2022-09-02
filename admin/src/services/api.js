@@ -615,7 +615,7 @@ export default {
         formData.append("files", f)
       }
 
-      return multipartRequest("/admin/uploads", formData)
+      return multipartRequest("/admin/upload", formData)
     },
   },
 

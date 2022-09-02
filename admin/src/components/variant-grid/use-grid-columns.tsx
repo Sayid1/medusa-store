@@ -2,10 +2,10 @@ import { capitalize } from "lodash"
 
 export const useGridColumns = (product, isEditing) => {
   const defaultFields = [
-    { header: "Title", field: "title" },
+    { header: "标题", field: "title" },
     { header: "SKU", field: "sku" },
-    { header: "EAN", field: "ean" },
-    { header: "Inventory", field: "inventory_quantity" },
+    { header: "商品条码", field: "ean" },
+    { header: "库存", field: "inventory_quantity" },
   ]
 
   if (isEditing) {
@@ -21,7 +21,7 @@ export const useGridColumns = (product, isEditing) => {
     return [
       ...optionColumns,
       {
-        header: "Prices",
+        header: "价格",
         field: "prices",
         formatter: (prices) => `${prices.length} price(s)`,
       },
@@ -30,7 +30,7 @@ export const useGridColumns = (product, isEditing) => {
   } else {
     return [
       {
-        header: "Variant",
+        header: "变体",
         field: "options",
         formatter: (value) => {
           const options = value.map((v) => {

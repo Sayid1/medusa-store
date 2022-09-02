@@ -62,36 +62,35 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
     <GeneralBodyCard
       isEdit={isEdit}
       product={product}
-      title="General"
-      subtitle="To start selling, all you need is a name, price, and image"
+      title="概要"
+      subtitle="要开始销售，您只需要输入名称、价格和图片"
     >
       <div className="mt-large">
-        <h6 className="inter-base-semibold mb-1">Details</h6>
+        <h6 className="inter-base-semibold mb-1">产品详情</h6>
         <label
           htmlFor="name"
           className="inter-small-regular text-grey-50 block max-w-[370px] mb-base"
         >
-          Give your product a short and clear name. 50-60 characters is the
-          recommended length for search engines.
+          给您的产品起一个简短而清晰的名称。 50-60 个字符是搜索引擎的推荐长度。
         </label>
         <div className="flex gap-8 mb-base">
           <Input
             id="name"
-            label="Name"
+            label="名称"
             name="title"
-            placeholder="Jacket, Sunglasses..."
+            placeholder="Happy Birthday Neon Sign"
             required
             ref={register({
-              required: "Name is required",
+              required: "名称是必填的",
               minLength: 1,
               pattern: /(.|\s)*\S(.|\s)*/,
             })}
           />
           <Input
-            tooltipContent="Handles are human friendly unique identifiers that are appropriate for URL slugs."
-            label="Handle"
+            tooltipContent="SEO友好的唯一标识符。"
+            label="唯一标识符"
             name="handle"
-            placeholder="bathrobe"
+            placeholder="unique-name"
             prefix="/"
             ref={register()}
           />
@@ -100,15 +99,14 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
           className="inter-small-regular text-grey-50 block max-w-[370px] mb-base"
           htmlFor="description"
         >
-          Give your product a short and clear description. 120-160 characters is
-          the recommended length for search engines.
+          给你的产品一个简短而清晰的描述。 120-160 个字符是搜索引擎的推荐长度。
         </label>
         <div className="grid grid-rows-3 grid-cols-2 gap-x-8 gap-y-4 mb-large">
           <Textarea
             name="description"
             id="description"
-            label="Description"
-            placeholder="Short description of the product..."
+            label="描述"
+            placeholder="产品的简短描述..."
             className="row-span-full"
             rows={8}
             ref={register}
@@ -116,9 +114,9 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
           <Controller
             as={Select}
             control={control}
-            label="Collection"
+            label="分类"
             name="collection"
-            placeholder="Select collection..."
+            placeholder="选择分类"
             options={collectionOptions}
             clearSelected
           />
@@ -128,8 +126,8 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
             render={({ value, onChange }) => {
               return (
                 <Select
-                  label="Type"
-                  placeholder="Select type..."
+                  label="类型"
+                  placeholder="选择类型..."
                   options={typeOptions}
                   onChange={onChange}
                   value={value}
@@ -147,8 +145,8 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
             render={({ onChange, value }) => {
               return (
                 <TagInput
-                  label="Tags (separated by comma)"
-                  placeholder="Spring, Summer..."
+                  label="标签（以因为逗号分隔）"
+                  placeholder="春天, 夏天..."
                   onChange={onChange}
                   values={value || []}
                 />
@@ -158,12 +156,8 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
           />
         </div>
         <div className="flex item-center gap-x-1.5 mb-xlarge">
-          <Checkbox name="discountable" ref={register} label="Discountable" />
-          <IconTooltip
-            content={
-              "When unchecked discounts will not be applied to this product"
-            }
-          />
+          <Checkbox name="discountable" ref={register} label="可打折" />
+          <IconTooltip content="当未选中的折扣不适用于此产品时" />
         </div>
         {showViewOptions && (
           <RadioGroup.Root
@@ -172,11 +166,11 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
             className="flex items-center gap-4 mt-xlarge"
           >
             <RadioGroup.SimpleItem
-              label="Simple product"
+              label="简单的产品"
               value={SINGLE_PRODUCT_VIEW}
             />
             <RadioGroup.SimpleItem
-              label="Product with variants"
+              label="具有变体的产品"
               value={VARIANTS_VIEW}
             />
           </RadioGroup.Root>
@@ -195,17 +189,17 @@ const GeneralBodyCard = ({ isEdit, product, ...props }) => {
 
   const onDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Product",
-      text: "Are you sure you want to delete this product",
+      heading: "删除产品",
+      text: "您确定要删除此产品吗？",
     })
     if (shouldDelete) {
       deleteProduct.mutate(undefined, {
         onSuccess: () => {
-          notification("Success", "Product deleted successfully", "success")
+          notification("成功", "产品删除成功", "success")
           navigate("/a/products/")
         },
         onError: (err) => {
-          notification("Ooops", getErrorMessage(err), "error")
+          notification("哎呀", getErrorMessage(err), "error")
         },
       })
     }
@@ -219,15 +213,11 @@ const GeneralBodyCard = ({ isEdit, product, ...props }) => {
       },
       {
         onSuccess: () => {
-          const pastTense = newStatus === "published" ? "published" : "drafted"
-          notification(
-            "Success",
-            `Product ${pastTense} successfully`,
-            "success"
-          )
+          const pastTense = newStatus === "published" ? "发布" : "保存草稿"
+          notification("成功", `产品 ${pastTense} 成功`, "success")
         },
         onError: (err) => {
-          notification("Ooops", getErrorMessage(err), "error")
+          notification("哎呀", getErrorMessage(err), "error")
         },
       }
     )
@@ -235,7 +225,7 @@ const GeneralBodyCard = ({ isEdit, product, ...props }) => {
 
   const actionables = [
     {
-      label: "Delete Product",
+      label: "删除产品",
       onClick: onDelete,
       variant: "danger" as const,
       icon: <TrashIcon />,
@@ -250,8 +240,8 @@ const GeneralBodyCard = ({ isEdit, product, ...props }) => {
         isEdit ? (
           <StatusSelector
             isDraft={product?.status === "draft"}
-            activeState="Published"
-            draftState="Draft"
+            activeState="发布"
+            draftState="草稿"
             onChange={onStatusChange}
           />
         ) : undefined

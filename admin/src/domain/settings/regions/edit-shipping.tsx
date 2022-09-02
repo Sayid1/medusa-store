@@ -180,16 +180,16 @@ const EditShipping = ({ shippingOption, region, onDone, onClick }) => {
                 <div>
                   <h1 className="inter-xlarge-semibold">
                     {shippingOption.is_return
-                      ? "Edit Return Shipping Option"
-                      : "Edit Shipping Option"}
+                      ? "编辑退货运输选项"
+                      : "编辑运输选项"}
                   </h1>
                 </div>
               </Modal.Header>
               <Modal.Content>
                 <div className="mb-large">
-                  <p className="inter-base-semibold">Fulfillment Method</p>
+                  <p className="inter-base-semibold">履行方式</p>
                   <p className="inter-base-regular text-grey-50">
-                    {shippingOption.data.id} via {shippingOption.provider_id}
+                    {shippingOption.data.id} 通过 {shippingOption.provider_id}
                   </p>
                 </div>
                 <div className="grid grid-cols-1 medium:grid-cols-2 gap-base">
@@ -223,12 +223,12 @@ const EditShipping = ({ shippingOption, region, onDone, onClick }) => {
                       onChange={() => setAdminOnly(!adminOnly)}
                       className="mr-small w-5 h-5 accent-violet-60 rounded-base"
                     />
-                    Show on website
+                    在网站是显示
                   </label>
                 </div>
                 {!shippingOption.is_return && (
                   <>
-                    <p className="inter-base-semibold mb-base">Requirements</p>
+                    <p className="inter-base-semibold mb-base">要求</p>
                     <div className="grid grid-cols-1 medium:grid-cols-2 gap-base">
                       <CurrencyInput
                         readOnly
@@ -260,16 +260,15 @@ const EditShipping = ({ shippingOption, region, onDone, onClick }) => {
                   </>
                 )}
                 <div className="mt-xlarge">
-                  <p className="inter-base-semibold">Danger Zone</p>
+                  <p className="inter-base-semibold">危险区</p>
                   <p className="inter-base-regular text-grey-50 mb-base">
-                    This will permanently delete this option from your Medusa
-                    Store
+                    这将从您的商店中永久删除此选项
                   </p>
                   <button
                     onClick={() => setShowDelete(true)}
                     className="text-rose-50 inter-base-semibold"
                   >
-                    Delete
+                    删除
                   </button>
                 </div>
               </Modal.Content>
@@ -282,7 +281,7 @@ const EditShipping = ({ shippingOption, region, onDone, onClick }) => {
                     size="small"
                     className="w-eventButton justify-center"
                   >
-                    Cancel changes
+                    撤销更改
                   </Button>
                   <Button
                     type="submit"
@@ -290,7 +289,7 @@ const EditShipping = ({ shippingOption, region, onDone, onClick }) => {
                     size="small"
                     className="w-eventButton justify-center"
                   >
-                    Save
+                    保存
                   </Button>
                 </div>
               </Modal.Footer>

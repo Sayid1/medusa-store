@@ -1,4 +1,4 @@
-import { SalesChannel } from "@medusajs/medusa"
+import { SalesChannel, Product } from "@medusajs/medusa"
 import React from "react"
 import { FormProvider, useForm, useFormContext } from "react-hook-form"
 import { FeatureFlagContext } from "../../../../context/feature-flag"
@@ -10,7 +10,7 @@ export const SINGLE_PRODUCT_VIEW = "single"
 
 type PRODUCT_VIEW = typeof VARIANTS_VIEW | typeof SINGLE_PRODUCT_VIEW
 
-const defaultProduct = {
+const defaultProduct: Product = {
   variants: [],
   images: [],
   prices: [],

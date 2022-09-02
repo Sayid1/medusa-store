@@ -21,8 +21,8 @@ const useProductActions = (product) => {
 
   const handleDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Product",
-      text: "Are you sure you want to delete this product?",
+      heading: "删除产品",
+      text: "您确定要删除此产品吗？",
     })
 
     if (shouldDelete) {
@@ -32,12 +32,12 @@ const useProductActions = (product) => {
 
   const getActions = (): ActionType[] => [
     {
-      label: "Edit",
+      label: "修改",
       onClick: () => navigate(`/a/products/${product.id}`),
       icon: <EditIcon size={20} />,
     },
     {
-      label: product.status === "published" ? "Unpublish" : "Publish",
+      label: product.status === "published" ? "取消发布" : "发布",
       onClick: () => {
         const newStatus = product.status === "published" ? "draft" : "published"
         updateProduct.mutate(
@@ -47,10 +47,10 @@ const useProductActions = (product) => {
           {
             onSuccess: () => {
               notification(
-                "Success",
-                `Successfully ${
-                  product.status === "published" ? "unpublished" : "published"
-                } product`,
+                "成功",
+                `成功 ${
+                  product.status === "published" ? "取消发布" : "发布"
+                } 产品`,
                 "success"
               )
             },
@@ -67,12 +67,12 @@ const useProductActions = (product) => {
         ),
     },
     {
-      label: "Duplicate",
+      label: "复制",
       onClick: () => copyProduct(product),
       icon: <DuplicateIcon size={20} />,
     },
     {
-      label: "Delete",
+      label: "删除",
       variant: "danger",
       onClick: handleDelete,
       icon: <TrashIcon size={20} />,

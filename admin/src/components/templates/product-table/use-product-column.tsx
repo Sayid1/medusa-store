@@ -12,13 +12,13 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
   const getProductStatus = (title) => {
     switch (title) {
       case "proposed":
-        return <StatusIndicator title={"Proposed"} variant={"warning"} />
+        return <StatusIndicator title={"建议修改"} variant={"warning"} />
       case "published":
-        return <StatusIndicator title={"Published"} variant={"success"} />
+        return <StatusIndicator title={"已发布"} variant={"success"} />
       case "rejected":
-        return <StatusIndicator title={"Rejected"} variant={"danger"} />
+        return <StatusIndicator title={"被拒绝"} variant={"danger"} />
       case "draft":
-        return <StatusIndicator title={"Draft"} variant={"default"} />
+        return <StatusIndicator title={"草稿"} variant={"default"} />
       default:
         return <StatusIndicator title={title} variant={"default"} />
     }
@@ -59,7 +59,7 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
   const columns = useMemo(
     () => [
       {
-        Header: "Name",
+        Header: "名称",
         accessor: "title",
         Cell: ({ row: { original } }) => {
           return (
@@ -89,7 +89,7 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
         },
       },
       {
-        Header: "Status",
+        Header: "状态",
         accessor: "status",
         Cell: ({ cell: { value } }) => getProductStatus(value),
       },
@@ -99,13 +99,13 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
         Cell: ({ cell: { value } }) => getProductSalesChannels(value),
       },
       {
-        Header: "Inventory",
+        Header: "库存",
         accessor: "variants",
         Cell: ({ cell: { value } }) => (
           <div>
             {value.reduce((acc, next) => acc + next.inventory_quantity, 0)}
-            {" in stock for "}
-            {value.length} variant(s)
+            {" 库存，"}
+            {value.length}种变体
           </div>
         ),
       },

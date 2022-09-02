@@ -164,7 +164,7 @@ const TagInput: React.FC<TagInputProps> = ({
     >
       {showLabel && (
         <InputHeader
-          label={label || "Tags (comma separated)"}
+          label={label || "标签（英文逗号分隔）"}
           {...{ required, tooltipContent, tooltip }}
         />
       )}

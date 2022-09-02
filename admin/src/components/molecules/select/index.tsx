@@ -234,7 +234,7 @@ const SSelect = React.forwardRef(
       clearSelected = false,
       isCreatable,
       filterOptions,
-      placeholder = "Search...",
+      placeholder = "搜索...",
       options,
       onCreateOption,
     }: MultiSelectProps,

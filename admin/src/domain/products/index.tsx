@@ -17,11 +17,11 @@ import { getErrorMessage } from "../../utils/error-messages"
 import EditProductPage from "./edit"
 import NewProductPage from "./new"
 
-const VIEWS = ["products", "collections"]
+const VIEWS = ["产品", "分类"]
 
 const ProductIndex = () => {
   const location = useLocation()
-  const [view, setView] = useState("products")
+  const [view, setView] = useState("产品")
 
   const createBatchJob = useAdminCreateBatchJob()
 
@@ -31,7 +31,7 @@ const ProductIndex = () => {
 
   useEffect(() => {
     if (location.search.includes("?view=collections")) {
-      setView("collections")
+      setView("分类")
     }
   }, [location])
 
@@ -41,7 +41,7 @@ const ProductIndex = () => {
 
   const CurrentView = () => {
     switch (view) {
-      case "products":
+      case "产品":
         return <ProductTable />
       default:
         return <CollectionsTable />
@@ -50,7 +50,7 @@ const ProductIndex = () => {
 
   const CurrentAction = () => {
     switch (view) {
-      case "products":
+      case "产品":
         return (
           <div className="flex space-x-2">
             <Button
@@ -59,7 +59,7 @@ const ProductIndex = () => {
               onClick={() => openExportModal()}
             >
               <ExportIcon size={20} />
-              Export Products
+              导出产品
             </Button>
             <Button
               variant="secondary"
@@ -67,7 +67,7 @@ const ProductIndex = () => {
               onClick={() => navigate(`/a/products/new`)}
             >
               <PlusIcon size={20} />
-              New Product
+              新增产品
             </Button>
           </div>
         )
@@ -80,7 +80,7 @@ const ProductIndex = () => {
               onClick={() => setShowNewCollection(!showNewCollection)}
             >
               <PlusIcon size={20} />
-              New Collection
+              新增分类
             </Button>
           </div>
         )
@@ -108,7 +108,7 @@ const ProductIndex = () => {
       { ...data, metadata },
       {
         onSuccess: ({ collection }) => {
-          notification("Success", "Successfully created collection", "success")
+          notification("成功", "已成功创建分类", "success")
           navigate(`/a/collections/${collection.id}`)
           setShowNewCollection(false)
         },
@@ -125,10 +125,10 @@ const ProductIndex = () => {
 
     createBatchJob.mutate(reqObj, {
       onSuccess: () => {
-        notification("Success", "Successfully initiated export", "success")
+        notification("成功", "成功启动导出任务", "success")
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("哎呀", getErrorMessage(err), "error")
       },
     })
 
@@ -162,7 +162,7 @@ const ProductIndex = () => {
       )}
       {exportModalOpen && (
         <ExportModal
-          title="Export Products"
+          title="导出产品"
           handleClose={() => closeExportModal()}
           onSubmit={handleCreateExport}
           loading={createBatchJob.isLoading}

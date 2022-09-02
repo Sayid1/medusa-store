@@ -9,7 +9,12 @@ import SaveFilterItem from "../../components/molecules/filter-dropdown/save-fiel
 import TagInput from "../../components/molecules/tag-input"
 import TabFilter from "../../components/molecules/filter-tab"
 
-const statusFilters = ["proposed", "draft", "published", "rejected"]
+const statusFilters = [
+  { label: "建议修改", value: "proposed" },
+  { label: "草稿", value: "draft" },
+  { label: "已发布", value: "published" },
+  { label: "已拒绝", value: "rejected" },
+]
 
 const COLLECTION_PAGE_SIZE = 10
 
@@ -113,7 +118,7 @@ const ProductsFilter = ({
             )}
           >
             <div className="flex rounded-rounded items-center bg-grey-5 border border-grey-20 inter-small-semibold px-2 h-6">
-              Filters
+              筛选
               <div className="text-grey-40 ml-1 flex items-center rounded">
                 <span className="text-violet-60 inter-small-semibold">
                   {numberOfFilters ? numberOfFilters : "0"}
@@ -127,14 +132,14 @@ const ProductsFilter = ({
         }
       >
         <FilterDropdownItem
-          filterTitle="Status"
+          filterTitle="状态"
           options={statusFilters}
           filters={tempState.status.filter}
           open={tempState.status.open}
           setFilter={(v) => setSingleFilter("status", v)}
         />
         <FilterDropdownItem
-          filterTitle="Collection"
+          filterTitle="分类"
           options={
             collections?.map((c) => ({ value: c.id, label: c.title })) || []
           }
@@ -183,7 +188,7 @@ const ProductsFilter = ({
                 "inter-small-regular": !tempState.tags.open,
               })}
             >
-              Tags
+              标签
             </span>
           </div>
 

@@ -39,13 +39,14 @@ const NewProductPage = () => {
     if (images.length > 0) {
       uploadedImgs = await Medusa.uploads
         .create(images)
-        .then(({ data }) => {
-          const uploaded = data.uploads.map(({ url }) => url)
+        .then((ret) => {
+          console.log("first", ret)
+          const uploaded = ret.data.uploads.map(({ url }) => url)
           return uploaded
         })
         .catch((err) => {
           setIsLoading(false)
-          notification("Error uploading images", getErrorMessage(err), "error")
+          notification("上传图片时出错", getErrorMessage(err), "error")
           return
         })
     }
@@ -59,12 +60,12 @@ const NewProductPage = () => {
       {
         onSuccess: ({ product }) => {
           setIsLoading(false)
-          notification("Success", "Product was succesfully created", "success")
+          notification("成功", "产品创建成功", "success")
           navigate(`/a/products/${product.id}`)
         },
         onError: (error) => {
           setIsLoading(false)
-          notification("Error", getErrorMessage(error), "error")
+          notification("哎呀", getErrorMessage(error), "error")
         },
       }
     )
@@ -127,19 +128,19 @@ const SaveNotification = ({ isLoading = false }) => {
           <FormToasterContainer.MultiActionButton
             actions={[
               {
-                label: "Save and publish",
+                label: "保存并且发布",
                 onClick: handleSubmit(onPublish, handleFormError),
               },
               {
-                label: "Save as draft",
+                label: "保存为草稿",
                 onClick: handleSubmit(onSaveDraft, handleFormError),
               },
             ]}
           >
-            Save
+            保存
           </FormToasterContainer.MultiActionButton>
           <FormToasterContainer.DiscardButton onClick={resetForm}>
-            Discard
+            重置
           </FormToasterContainer.DiscardButton>
         </FormToasterContainer.Actions>
       </FormToasterContainer>

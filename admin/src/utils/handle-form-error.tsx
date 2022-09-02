@@ -58,8 +58,8 @@ function getFormErrors(errors: DeepMap<FieldValues, FieldError>) {
 
   const title =
     messages.length > 1
-      ? `There were ${messages.length} errors with your submission`
-      : "There was an error with your submission"
+      ? `您的提交存在 ${messages.length} 处错误`
+      : "您的提交有错误”"
 
   return { title, list, refs }
 }

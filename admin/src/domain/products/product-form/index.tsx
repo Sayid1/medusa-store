@@ -24,8 +24,8 @@ const ProductForm = ({ product, isEdit = false }: ProductFormProps) => {
   return (
     <div>
       <Breadcrumb
-        currentPage={"Product Details"}
-        previousBreadcrumb={"Products"}
+        currentPage={"产品详情"}
+        previousBreadcrumb={"产品列表"}
         previousRoute="/a/products"
       />
       <div className="flex flex-col space-y-base pb-2xlarge">

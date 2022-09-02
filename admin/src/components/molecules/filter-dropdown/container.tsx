@@ -56,7 +56,7 @@ const FilterDropdownContainer: React.FC<FilterDropdownContainerProps> = ({
             variant="ghost"
             onClick={() => onClear()}
           >
-            Clear
+            清除
           </Button>
           <Button
             tabIndex={-1}
@@ -65,7 +65,7 @@ const FilterDropdownContainer: React.FC<FilterDropdownContainerProps> = ({
             size="small"
             onClick={() => onSubmit()}
           >
-            Apply
+            应用
           </Button>
         </div>
         {React.Children.map(children, (child) => {

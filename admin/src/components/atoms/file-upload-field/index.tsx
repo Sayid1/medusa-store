@@ -12,8 +12,7 @@ type FileUploadFieldProps = {
 
 const defaultText = (
   <span>
-    Drop your images here, or{" "}
-    <span className="text-violet-60">click to browse</span>
+    把你的图片拖放在这里，或者 <span className="text-violet-60">点击上传</span>
   </span>
 )
 
@@ -80,9 +79,7 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
         {placeholder}
       </div>
       {fileUploadError && (
-        <span className="text-rose-60">
-          {errorMessage || "Please upload an image file"}
-        </span>
+        <span className="text-rose-60">{errorMessage || "请上传图片文件"}</span>
       )}
       <input
         ref={inputRef}

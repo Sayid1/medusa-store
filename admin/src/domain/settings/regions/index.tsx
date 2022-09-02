@@ -64,12 +64,12 @@ const Regions = () => {
         />
         <TwoSplitPane>
           <BodyCard
-            title="Regions"
-            subtitle="Manage the markets that you will operate within"
+            title="地区"
+            subtitle="管理您将在其中运营的市场"
             actionables={[
               {
                 icon: <PlusIcon />,
-                label: "Add region",
+                label: "添加地区",
                 onClick: () => setAddRegion(!addRegion),
               },
             ]}

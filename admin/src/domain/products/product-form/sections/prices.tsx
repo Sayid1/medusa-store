@@ -29,12 +29,9 @@ const Prices = ({ currencyCodes, defaultCurrencyCode, defaultAmount }) => {
   )
 
   return (
-    <BodyCard
-      title="Pricing"
-      subtitle="Give products a price for each of the currencies that you sell in"
-    >
+    <BodyCard title="售价" subtitle="为您销售的每种货币的产品定价">
       <div className="mt-base">
-        <h6 className="inter-base-semibold text-grey-90 mr-1.5">Prices</h6>
+        <h6 className="inter-base-semibold text-grey-90 mr-1.5">价格</h6>
 
         <div className="max-w-[630px]">
           {fields.map((field, index) => {
@@ -99,7 +96,7 @@ const Prices = ({ currencyCodes, defaultCurrencyCode, defaultAmount }) => {
               disabled={availableCurrencies?.length === 0}
             >
               <PlusIcon size={20} />
-              Add a price
+              添加价格
             </Button>
           </div>
         </div>

@@ -18,7 +18,7 @@ export type MetadataField = {
 const Metadata: React.FC<AddMetadataProps> = ({
   metadata,
   setMetadata,
-  heading = "Metadata",
+  heading = "元数据",
 }) => {
   const [localData, setLocalData] = useState<MetadataField[]>([])
 
@@ -79,7 +79,7 @@ const Metadata: React.FC<AddMetadataProps> = ({
             onClick={addKeyPair}
           >
             <PlusIcon size={20} />
-            Add Metadata
+            添加元数据
           </Button>
         </div>
       </div>

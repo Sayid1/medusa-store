@@ -160,20 +160,18 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
           <Modal.Header handleClose={onClick}>
             <div>
               <h1 className="inter-xlarge-semibold">
-                {isReturn
-                  ? "Add Return Shipping Option"
-                  : "Add Shipping Option"}
+                {isReturn ? "添加退货运输选项" : "添加运输选项"}
               </h1>
             </div>
           </Modal.Header>
           <Modal.Content>
             <div className="grid grid-cols-1 medium:grid-cols-2 gap-base">
               <Input
-                label="Name"
+                label="名称"
                 name="name"
                 ref={register({ required: true })}
                 required
-                placeholder="New Shipping Option"
+                placeholder="新的运输选项"
                 className="flex-grow"
               />
               <CurrencyInput
@@ -182,7 +180,7 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
                 size="small"
               >
                 <CurrencyInput.AmountInput
-                  label="Price"
+                  label="价格"
                   onChange={(v) => handleAmountChange("amount", v)}
                   amount={undefined}
                 />
@@ -199,7 +197,7 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
                   onChange={() => setAdminOnly(!adminOnly)}
                   className="mr-small w-5 h-5 accent-violet-60 rounded-base"
                 />
-                Show on website
+                在网站上显示
               </label>
             </div>
             {!isReturn && (
@@ -212,7 +210,7 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
                   </div>
                 ) : (
                   <Select
-                    label="Shipping Profile"
+                    label="运输资料"
                     value={selectedProfile}
                     onChange={handleProfileChange}
                     required
@@ -224,7 +222,7 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
             )}
             <div className="mb-base">
               <Select
-                label="Fulfillment Method"
+                label="履行方式"
                 value={selectedOption}
                 onChange={handleFulfillmentChange}
                 required
@@ -234,7 +232,7 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
             </div>
             {!isReturn && (
               <div>
-                <p className="inter-base-semibold mb-base">Requirements</p>
+                <p className="inter-base-semibold mb-base">要求</p>
                 <div className="grid grid-cols-1 medium:grid-cols-2 gap-base">
                   <CurrencyInput
                     currentCurrency={region.currency_code}
@@ -258,7 +256,7 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
                     size="small"
                   >
                     <CurrencyInput.AmountInput
-                      label="Price"
+                      label="价格"
                       onChange={(v) =>
                         handleAmountChange(
                           "requirements.max_subtotal.amount",
@@ -280,7 +278,7 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
                 className="justify-center w-eventButton"
                 onClick={onClick}
               >
-                Cancel
+                取消
               </Button>
               <Button
                 type="submit"
@@ -288,7 +286,7 @@ const NewShipping = ({ isReturn, region, onCreated, onClick }) => {
                 size="small"
                 className="justify-center w-eventButton"
               >
-                Save
+                保存
               </Button>
             </div>
           </Modal.Footer>

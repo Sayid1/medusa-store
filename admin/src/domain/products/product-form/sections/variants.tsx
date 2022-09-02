@@ -113,18 +113,18 @@ const Variants = ({ isEdit, product }) => {
 
   return (
     <BodyCard
-      title="Variants"
-      subtitle="Add variations of this product. Offer your customers different options for price, color, format, size, shape, etc."
+      title="变体"
+      subtitle="添加此产品的变体。 为您的客户提供不同的价格、颜色、格式、尺寸、形状等选项。"
       forceDropdown={true}
       actionables={
         isEdit && [
           {
-            label: "Add variant",
+            label: "添加变体",
             onClick: () => setShowAddVariantModal(true),
             icon: <PlusIcon size={20} />,
           },
           {
-            label: "Edit options",
+            label: "编辑选项",
             onClick: () => setShowAddOption(true),
             icon: <EditIcon size={20} />,
           },
@@ -136,7 +136,7 @@ const Variants = ({ isEdit, product }) => {
           <>
             <div className="flex items-center mb-base">
               <h6 className="inter-base-semibold text-grey-90 mr-1.5">
-                Product Options
+                产品选项
               </h6>
             </div>
             <div className="flex flex-col gap-y-base max-w-[570px] w-full mb-4">
@@ -148,13 +148,13 @@ const Variants = ({ isEdit, product }) => {
                       className="w-[144px]"
                       name={`options[${index}].name`}
                       onChange={(e) => updateOptionName(e, index)}
-                      label="Option title"
-                      placeholder="Color"
+                      label="选项名称"
+                      placeholder="颜色"
                       value={o?.name || o.title}
                     />
                     <TagInput
                       className="grow"
-                      placeholder="Blue, Green"
+                      placeholder="蓝色、绿色"
                       values={o?.values}
                       onChange={(values) => updateOptionValue(index, values)}
                     />
@@ -169,14 +169,14 @@ const Variants = ({ isEdit, product }) => {
               ))}
               <div className="mt-xs">
                 <Button onClick={handleAddOption} size="small" variant="ghost">
-                  + Add an option
+                  + 添加一个选项
                 </Button>
               </div>
             </div>
             <div className="flex justify-center mb-base flex-col space-y-2">
               <div className="flex space-x-2">
-                <h6 className="inter-base-semibold text-grey-90">Variants</h6>
-                <IconTooltip content="Add product options to create variants" />
+                <h6 className="inter-base-semibold text-grey-90">变体</h6>
+                <IconTooltip content="添加产品选项以创建变体" />
               </div>
             </div>
           </>
@@ -199,7 +199,7 @@ const Variants = ({ isEdit, product }) => {
         <VariantEditor
           onCancel={() => setShowAddVariantModal(false)}
           onSubmit={handleAddVariant}
-          title="Add variant"
+          title="添加变体"
           optionsMap={buildOptionsMap(product)}
         />
       )}

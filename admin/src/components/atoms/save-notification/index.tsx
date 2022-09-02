@@ -19,8 +19,8 @@ type SaveNotificationProps = {
 const SaveNotification: React.FC<SaveNotificationProps> = ({
   toast,
   icon,
-  title = "Unsaved changes",
-  message = "You have unsaved changes. Do you want to save and publish or discard them?",
+  title = "未保存的更改",
+  message = "您有未保存的更改。 您要保存并发布还是丢弃它们？",
   onSave,
   reset,
 }) => {

@@ -12,8 +12,8 @@ const useCollectionActions = (collection) => {
 
   const handleDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Collection",
-      text: "Are you sure you want to delete this collection?",
+      heading: "删除分类",
+      text: "确定要删除此分类吗？",
     })
 
     if (shouldDelete) {
@@ -23,12 +23,12 @@ const useCollectionActions = (collection) => {
 
   const getActions = (coll): ActionType[] => [
     {
-      label: "Edit",
+      label: "修改",
       onClick: () => navigate(`/a/collections/${coll.id}`),
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete",
+      label: "删除",
       variant: "danger",
       onClick: handleDelete,
       icon: <TrashIcon size={20} />,

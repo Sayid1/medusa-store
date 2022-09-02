@@ -103,7 +103,7 @@ const CollectionsTable: React.FC = () => {
       <Table
         enableSearch
         handleSearch={handleSearch}
-        searchPlaceholder="Search Collections"
+        searchPlaceholder="搜索"
         filteringOptions={filteringOptions}
         {...getTableProps()}
       >
@@ -139,7 +139,7 @@ const CollectionsTable: React.FC = () => {
         limit={limit}
         offset={offset}
         pageSize={offset + rows.length}
-        title="Collections"
+        title="分类"
         currentPage={pageIndex + 1}
         pageCount={pageCount}
         nextPage={handleNext}
