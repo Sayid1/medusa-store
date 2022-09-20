@@ -1,7 +1,10 @@
 import medusaRequest, { multipartRequest } from "./request"
 
 const removeNullish = (obj) =>
-  Object.entries(obj).reduce((a, [k, v]) => (v ? ((a[k] = v), a) : a), {})
+  Object.entries(obj).reduce(
+    (a, [k, v]) => (v !== undefined && v !== null ? ((a[k] = v), a) : a),
+    {}
+  )
 
 const buildQueryFromObject = (search, prefix = "") =>
   Object.entries(search)
@@ -336,13 +339,54 @@ export default {
       return medusaRequest("GET", path)
     },
 
-    addProducts(id, payload) {
-      const path = `/admin/collections/${id}/products/batch`
+    allChildren() {
+      const path = `/admin/collections/extender/all-children`
+      return medusaRequest("GET", path)
+    },
+    all(search = {}) {
+      const clean = removeNullish(search)
+      const params = Object.keys(clean)
+        .map((k) => `${k}=${search[k]}`)
+        .filter((s) => !!s)
+        .join("&")
+      const path = `/admin/collections/extender/all${params && `?${params}`}`
+      return medusaRequest("GET", path)
+    },
+
+    products(search = {}) {
+      const clean = removeNullish(search)
+      const params = Object.keys(clean)
+        .map((k) => `${k}=${search[k]}`)
+        .filter((s) => !!s)
+        .join("&")
+      const path = `/admin/collections/extender/products?${params}`
+      return medusaRequest("GET", path)
+    },
+
+    allProducts(id) {
+      const path = `/admin/collections/extender/products/all/${id}`
+      return medusaRequest("GET", path)
+    },
+
+    addChildrenCollection(id, payload) {
+      const path = `/admin/collections/extender/add-children/${id}`
       return medusaRequest("POST", path, payload)
     },
 
-    removeProducts(id, payload) {
-      const path = `/admin/collections/${id}/products/batch`
+    removeCollection(id, parentId) {
+      const path = `/admin/collections/extender/${id}${
+        parentId ? "/" + parentId : ""
+      }`
+      return medusaRequest("DELETE", path)
+    },
+
+    addProducts(payload) {
+      const path = `/admin/product-collection-relation/extender`
+      return medusaRequest("POST", path, payload)
+    },
+
+    removeProduct(payload) {
+      const path = `/admin/product-collection-relation/extender`
       return medusaRequest("DELETE", path, payload)
     },
   },

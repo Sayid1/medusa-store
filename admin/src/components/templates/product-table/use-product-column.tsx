@@ -82,19 +82,12 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
         },
       },
       {
-        Header: "Collection",
-        accessor: "collection", // accessor is the "key" in the data
-        Cell: ({ cell: { value } }) => {
-          return <div>{value?.title || "-"}</div>
-        },
-      },
-      {
         Header: "状态",
         accessor: "status",
         Cell: ({ cell: { value } }) => getProductStatus(value),
       },
       {
-        Header: "Availability",
+        Header: "销售渠道",
         accessor: "sales_channels",
         Cell: ({ cell: { value } }) => getProductSalesChannels(value),
       },

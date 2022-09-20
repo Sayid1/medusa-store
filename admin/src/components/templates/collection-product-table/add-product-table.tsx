@@ -11,7 +11,7 @@ import useCollectionProductColumns from "./use-collection-product-columns"
 
 type AddProductsTableProps = {
   existingRelations: any[]
-  onSubmit: (selectedIds: string[], removedIds: string[]) => void
+  onSubmit: (selectedIds: string[]) => void
   onClose: () => void
 }
 
@@ -25,7 +25,6 @@ const AddProductsTable: React.FC<AddProductsTableProps> = ({
   const [offset, setOffset] = useState(0)
   const [numPages, setNumPages] = useState(0)
   const [currentPage, setCurrentPage] = useState(0)
-
   const [selectedProducts, setSelectedProducts] = useState<any[]>([])
   const [removedProducts, setRemovedProducts] = useState<any[]>([])
 
@@ -147,24 +146,21 @@ const AddProductsTable: React.FC<AddProductsTableProps> = ({
   }, [selectedProducts, removedProducts])
 
   const handleSubmit = () => {
-    onSubmit(
-      selectedProducts.map((p) => p.id),
-      removedProducts.map((p) => p.id)
-    )
+    onSubmit(Object.keys(selectedRowIds))
   }
 
   return (
     <Modal handleClose={onClose}>
       <Modal.Body>
         <Modal.Header handleClose={onClose}>
-          <h3 className="inter-xlarge-semibold">Add Products</h3>
+          <h3 className="inter-xlarge-semibold">编辑产品</h3>
         </Modal.Header>
         <Modal.Content>
           <div className="w-full flex flex-col justify-between h-[650px]">
             <Table
               enableSearch
               handleSearch={handleSearch}
-              searchPlaceholder="Search Products"
+              searchPlaceholder="搜索产品"
               {...getTableProps()}
               className="flex-grow"
             >
@@ -214,7 +210,7 @@ const AddProductsTable: React.FC<AddProductsTableProps> = ({
               className="w-eventButton"
               onClick={onClose}
             >
-              Cancel
+              取消
             </Button>
             <Button
               variant="primary"
@@ -223,7 +219,7 @@ const AddProductsTable: React.FC<AddProductsTableProps> = ({
               onClick={handleSubmit}
               disabled={disabled}
             >
-              Save
+              保存
             </Button>
           </div>
         </Modal.Footer>

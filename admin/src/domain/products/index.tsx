@@ -44,7 +44,7 @@ const ProductIndex = () => {
       case "产品":
         return <ProductTable />
       default:
-        return <CollectionsTable />
+        return <CollectionsTable parentId="0" />
     }
   }
 
@@ -112,7 +112,7 @@ const ProductIndex = () => {
           navigate(`/a/collections/${collection.id}`)
           setShowNewCollection(false)
         },
-        onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        onError: (err) => notification("哎呀", getErrorMessage(err), "error"),
       }
     )
   }

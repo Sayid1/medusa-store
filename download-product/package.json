@@ -1,0 +1,17 @@
+{
+  "name": "download-product",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "nodejs-web-scraper": "^6.1.0",
+    "scrape-it": "^5.3.2"
+  }
+}

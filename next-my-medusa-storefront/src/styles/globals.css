@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    @apply -translate-y-2 text-xsmall-regular;
+  }
+
+  input:focus ~ label {
+    @apply left-0;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid #212121;
+    -webkit-text-fill-color: #212121;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+@layer components {
+  .layout-base {
+    @apply min-h-screen max-w-screen-2xl mx-auto py-12 px-4 sm:py-8 sm:px-6 lg:px-12;
+  }
+  .content-container {
+    @apply max-w-[1500px] w-full mx-auto px-8
+  }
+
+  .contrast-btn {
+    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+  }
+
+  .text-xsmall-regular {
+    @apply text-[10px] leading-4 font-normal;
+  }
+
+  .text-small-regular {
+    @apply text-xs leading-5 font-normal;
+  }
+
+  .text-small-semi {
+    @apply text-xs leading-5 font-semibold;
+  }
+
+  .text-base-regular {
+    @apply text-sm leading-6 font-normal;
+  }
+
+  .text-base-semi {
+    @apply text-sm leading-6 font-semibold;
+  }
+
+  .text-large-regular {
+    @apply text-base leading-6 font-normal;
+  }
+
+  .text-large-semi {
+    @apply text-base leading-6 font-semibold;
+  }
+
+  .text-xl-regular {
+    @apply text-2xl leading-[36px] font-normal;
+  }
+
+  .text-xl-semi {
+    @apply text-2xl leading-[36px] font-semibold;
+  }
+
+  .text-2xl-regular {
+    @apply text-[30px] leading-[48px] font-normal;
+  }
+
+  .text-2xl-semi {
+    @apply text-[30px] leading-[48px] font-semibold;
+  }
+
+  .text-3xl-regular {
+    @apply text-[36px] leading-[48px] font-normal;
+  }
+
+  .text-3xl-semi {
+    @apply text-[36px] leading-[48px] font-semibold;
+  }
+}
+
+
+:root {
+  --default-pl: max(25px, calc((100% - 1145px) / 2 + 25px));
+  --rg: radial-gradient(circle 800px at 700px 200px, hsl(276 100% 99.0%), #FDFCFD00), radial-gradient(circle 600px at calc(100% - 300px) 300px, hsl(165 68.8% 89.5%), #FDFCFD00), radial-gradient(circle 800px at right center, hsl(193 99.0% 94.7%), #FDFCFD00), radial-gradient(circle 800px at right bottom, hsl(193 100% 98.8%), #FDFCFD00), radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), hsl(323 86.3% 96.5%), hsl(322 100% 99.4%), #FDFCFD00);
+  --dark-rg: radial-gradient(circle 800px at 700px 200px, hsl(283 30.0% 11.8%), #16161800), radial-gradient(circle 600px at calc(100% - 300px) 300px, hsl(174 84.8% 10.3%), #16161800), radial-gradient(circle 800px at right center, hsl(201 74.6% 12.2%), #16161800), radial-gradient(circle 800px at right bottom, hsl(205 45.0% 8.6%), #16161800), radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), hsl(319 41.0% 16.0%), hsl(318 25.0% 9.6%), #16161800);
+  --max-width: 1145px;
+  --primary-bg: rgb(248, 249, 250);
+  --secondary-color: hsl(206 24.0% 9.0%); /* hsl(210 6.0% 93.0%); */
+  --tertiary-color: hsl(206 6.0% 63.0%);
+
+  --fourth-color: rgb(236, 0, 140);
+  --fourth-hover-color: rgb(236, 0, 140, .5);
+  }

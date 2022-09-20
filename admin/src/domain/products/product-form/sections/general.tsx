@@ -6,7 +6,7 @@ import {
   useAdminProductTypes,
   useAdminUpdateProduct,
 } from "medusa-react"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Controller } from "react-hook-form"
 import Checkbox from "../../../../components/atoms/checkbox"
 import TrashIcon from "../../../../components/fundamentals/icons/trash-icon"
@@ -21,6 +21,8 @@ import RadioGroup from "../../../../components/organisms/radio-group"
 import useImperativeDialog from "../../../../hooks/use-imperative-dialog"
 import useNotification from "../../../../hooks/use-notification"
 import { getErrorMessage } from "../../../../utils/error-messages"
+import Medusa from "../../../../services/api"
+
 import {
   SINGLE_PRODUCT_VIEW,
   useProductForm,
@@ -35,28 +37,35 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
     viewType,
     setValue,
   } = useProductForm()
-  const { product_types } = useAdminProductTypes(undefined, { cacheTime: 0 })
-  const { collections } = useAdminCollections()
+  // const { product_types } = useAdminProductTypes(undefined, { cacheTime: 0 })
+  // const { collections } = useAdminCollections()
+  const [collectionOptions, setCollectionOptions] = useState([])
 
-  const typeOptions =
-    product_types?.map((tag) => ({ label: tag.value, value: tag.id })) || []
-  const collectionOptions =
-    collections?.map((collection) => ({
-      label: collection.title,
-      value: collection.id,
-    })) || []
+  useEffect(() => {
+    Medusa.collections.allChildren().then((ret) => {
+      setCollectionOptions(
+        ret.data.map((collection) => ({
+          label: collection.title,
+          value: collection.id,
+        })) || []
+      )
+    })
+  }, [])
 
-  const setNewType = (value: string) => {
-    const newType = {
-      label: value,
-      value,
-    }
+  // const typeOptions =
+  //   product_types?.map((tag) => ({ label: tag.value, value: tag.id })) || []
 
-    typeOptions.push(newType)
-    setValue("type", newType)
+  // const setNewType = (value: string) => {
+  //   const newType = {
+  //     label: value,
+  //     value,
+  //   }
 
-    return newType
-  }
+  //   typeOptions.push(newType)
+  //   setValue("type", newType)
+
+  //   return newType
+  // }
 
   return (
     <GeneralBodyCard
@@ -69,7 +78,7 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
         <h6 className="inter-base-semibold mb-1">产品详情</h6>
         <label
           htmlFor="name"
-          className="inter-small-regular text-grey-50 block max-w-[370px] mb-base"
+          className="inter-small-regular text-grey-50 block mb-base"
         >
           给您的产品起一个简短而清晰的名称。 50-60 个字符是搜索引擎的推荐长度。
         </label>
@@ -96,7 +105,7 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
           />
         </div>
         <label
-          className="inter-small-regular text-grey-50 block max-w-[370px] mb-base"
+          className="inter-small-regular text-grey-50 block mb-base"
           htmlFor="description"
         >
           给你的产品一个简短而清晰的描述。 120-160 个字符是搜索引擎的推荐长度。
@@ -111,16 +120,25 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
             rows={8}
             ref={register}
           />
-          <Controller
-            as={Select}
+          {/* <Controller
+            // as={Select}
             control={control}
-            label="分类"
             name="collection"
-            placeholder="选择分类"
-            options={collectionOptions}
-            clearSelected
-          />
-          <Controller
+            render={({ value, onChange }) => {
+              return (
+                <Select
+                  label="分类"
+                  isMultiSelect
+                  placeholder="选择分类"
+                  options={collectionOptions}
+                  onChange={onChange}
+                  value={value}
+                  clearSelected
+                />
+              )
+            }}
+          /> */}
+          {/* <Controller
             control={control}
             name="type"
             render={({ value, onChange }) => {
@@ -153,7 +171,7 @@ const General = ({ showViewOptions = true, isEdit = false, product }) => {
               )
             }}
             control={control}
-          />
+          /> */}
         </div>
         <div className="flex item-center gap-x-1.5 mb-xlarge">
           <Checkbox name="discountable" ref={register} label="可打折" />

@@ -1,9 +1,7 @@
 import OSS from 'ali-oss'
 import { Router } from 'express'
-import cors from 'cors'
 import multer from 'multer'
-import { projectConfig } from '../../../medusa-config'
-import { upload } from './file'
+import { upload } from './upload'
 
 let oss = new OSS({
     // yourRegion填写Bucket所在地域。以华东1（杭州）为例，Region填写为oss-cn-hangzhou。
@@ -39,16 +37,9 @@ const up = multer({
 })
 
 export default app => {
-    app.use('/admin', route)
+    app.use('/upload', route)
 
-    route.use(
-        cors({
-            origin: projectConfig.admin_cors.split(','),
-            credentials: true,
-        }),
-    )
-
-    route.post('/upload', up.array('files'), upload)
+    route.post('/', up.array('files'), upload)
 
     return app
 }

@@ -199,7 +199,7 @@ const Variants = ({ isEdit, product }) => {
         <VariantEditor
           onCancel={() => setShowAddVariantModal(false)}
           onSubmit={handleAddVariant}
-          title="添加变体"
+          title="添加12变体"
           optionsMap={buildOptionsMap(product)}
         />
       )}

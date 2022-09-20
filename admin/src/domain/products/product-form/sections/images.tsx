@@ -90,14 +90,13 @@ const Images = () => {
       <div className="mt-2xlarge">
         <FileUploadField
           onFileChosen={(files) => {
-            const file = files[0]
-            const url = URL.createObjectURL(file)
-            appendImage({
-              url,
+            const imgs = Array.from(files).map((file) => ({
+              url: URL.createObjectURL(file),
               name: file.name,
               size: file.size,
               nativeFile: file,
-            })
+            }))
+            appendImage(imgs)
           }}
           placeholder="推荐 1200 x 1600 (3:4)，每个最大 10MB"
           filetypes={["png", "jpg", "jpeg"]}

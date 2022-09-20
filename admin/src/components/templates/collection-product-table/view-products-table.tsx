@@ -12,43 +12,58 @@ import useViewProductColumns from "./use-view-product-columns"
 
 type ViewProductsTableProps = {
   collectionId: string
-  refetchCollection: () => void
+  refetchAllCollectionProduct: (num: number) => void
 }
 
 const ViewProductsTable: React.FC<ViewProductsTableProps> = ({
   collectionId,
-  refetchCollection,
+  refetchAllCollectionProduct,
 }) => {
   const limit = 10
   const [query, setQuery] = useState("")
   const [offset, setOffset] = useState(0)
+  const [count, setCount] = useState(0)
+  const [products, setProducts] = useState([])
   const [numPages, setNumPages] = useState(0)
+  const [updates, setUpdates] = useState(0)
   const [currentPage, setCurrentPage] = useState(0)
   const debouncedSearchTerm = useDebounce(query, 500)
 
   const [showDelete, setShowDelete] = useState(false)
   const [idToDelete, setIdToDelete] = useState<string | undefined>(undefined)
 
-  const { isLoading, count, products, refetch } = useAdminProducts({
-    q: debouncedSearchTerm,
-    collection_id: [collectionId],
-    limit: limit,
-    offset,
-  })
+  // const { isLoading, count, products, refetch } = useAdminProducts({
+  //   q: debouncedSearchTerm,
+  //   collection_id: [collectionId],
+  //   limit: limit,
+  //   offset,
+  // })
 
   useEffect(() => {
-    refetch() // Ensure we get the latest data
-  }, [collectionId])
+    // refetch() // Ensure we get the latest data
+    Medusa.collections
+      .products({
+        q: debouncedSearchTerm,
+        collectionId,
+        limit: limit,
+        offset,
+      })
+      .then((ret) => {
+        setProducts(ret.data.products)
+        setCount(ret.data.count)
+      })
+  }, [collectionId, debouncedSearchTerm, offset, updates])
 
   const handleRemoveProduct = () => {
     if (idToDelete) {
-      Medusa.products
-        .update(idToDelete, {
-          collection_id: null,
+      Medusa.collections
+        .removeProduct({
+          collectionId,
+          productId: idToDelete,
         })
         .then(() => {
-          refetch()
-          refetchCollection()
+          setUpdates(updates + 1)
+          refetchAllCollectionProduct(updates + 1)
         })
     }
   }
@@ -141,17 +156,17 @@ const ViewProductsTable: React.FC<ViewProductsTableProps> = ({
         <Table
           enableSearch
           handleSearch={handleSearch}
-          searchPlaceholder="Search Products"
+          searchPlaceholder="搜索产品"
           {...getTableProps()}
           className="h-full"
         >
           {!products?.length ? (
             <div className="inter-small-regular text-grey-40 flex flex-grow justify-center items-center">
-              {isLoading ? (
+              {/* {isLoading ? (
                 <Spinner size="large" variant="secondary" />
-              ) : (
-                "No products yet"
-              )}
+              ) : ( */}
+              还没有产品
+              {/* )} */}
             </div>
           ) : (
             <Table.Body {...getTableBodyProps()}>
@@ -177,7 +192,7 @@ const ViewProductsTable: React.FC<ViewProductsTableProps> = ({
           limit={limit}
           offset={offset}
           pageSize={offset + rows.length}
-          title="Products"
+          title="产品"
           currentPage={pageIndex + 1}
           pageCount={pageCount}
           nextPage={handleNext}
@@ -190,8 +205,8 @@ const ViewProductsTable: React.FC<ViewProductsTableProps> = ({
         <DeletePrompt
           onDelete={async () => handleRemoveProduct()}
           handleClose={() => setShowDelete(!showDelete)}
-          heading="Remove product from collection"
-          successText="Product removed from collection"
+          heading="确认从分类中删除产品吗？"
+          successText="已从分类中删除"
         />
       )}
     </>

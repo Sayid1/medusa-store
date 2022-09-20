@@ -84,9 +84,13 @@ export const ProductFormProvider = ({
     product.sales_channels
   )
 
-  const appendImage = (image) => {
+  const appendImage = (image: object | object[]) => {
     setHasImagesChanged(true)
-    setImages([...images, image])
+    if (Array.isArray(image)) {
+      setImages([...images, ...image])
+    } else {
+      setImages([...images, image])
+    }
   }
 
   const removeImage = (image) => {

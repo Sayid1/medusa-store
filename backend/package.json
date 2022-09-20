@@ -1,39 +1,51 @@
 {
-  "name": "medusa-starter-default",
-  "version": "0.0.1",
-  "description": "A starter for Medusa projects.",
-  "author": "Sebastian Rindom <skrindom@gmail.com>",
-  "license": "MIT",
-  "scripts": {
-    "seed": "medusa seed -f ./data/seed.json",
-    "build": "babel -w src -d dist --extensions \".ts,.js\"",
-    "start": "medusa develop"
+    "name": "medusa-starter-default",
+    "version": "0.0.1",
+    "description": "A starter for Medusa projects.",
+    "author": "Sebastian Rindom <skrindom@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "medusa:seed": "medusa seed -f ./data/seed.json",
+        "medusa:build": "babel src -d dist --extensions \".ts,.js\"",
+        "medusa:migrations": "medusa migrations run",
+        "extend:build": "rm -rf dist && ./node_modules/.bin/tsc -p tsconfig.json",
+        "start": "npm run build && NODE_ENV=development node ./dist/src/main.js",
+        "start:watch": "nodemon --watch './src/**/*.ts' --exec 'ts-node' ./src/main.ts",
+        "start:prod": "npm run build && NODE_ENV=production node dist/main"
+    },
+    "dependencies": {
+        "@medusajs/medusa": "^1.3.5",
+        "@medusajs/medusa-cli": "^1.3.1",
+        "@types/express": "^4.17.13",
+        "ali-oss": "^6.17.1",
+        "cors": "^2.8.5",
+        "medusa-extender": "^1.7.4",
+        "medusa-file-minio": "^1.0.9",
+        "medusa-fulfillment-manual": "^1.1.31",
+        "medusa-interfaces": "^1.3.2",
+        "medusa-payment-manual": "^1.0.16",
+        "medusa-payment-stripe": "^1.1.42",
+        "multer": "^1.4.5-lts.1",
+        "typeorm": "^0.2.x"
+    },
+  "peerDependencies": {
+    "medusa-interfaces": "1.3.2",
+    "typeorm": "0.2.x"
   },
-  "dependencies": {
-    "@medusajs/medusa": "^1.3.5",
-    "@medusajs/medusa-cli": "^1.3.1",
-    "@types/express": "^4.17.13",
-    "ali-oss": "^6.17.1",
-    "cors": "^2.8.5",
-    "medusa-file-minio": "^1.0.9",
-    "medusa-fulfillment-manual": "^1.1.31",
-    "medusa-interfaces": "^1.3.2",
-    "medusa-payment-manual": "^1.0.16",
-    "medusa-payment-stripe": "^1.1.42",
-    "multer": "^1.4.5-lts.1",
-    "typeorm": "^0.2.36"
-  },
-  "repository": "https://github.com/medusajs/medusa-starter-default.git",
-  "keywords": [
-    "sqlite",
-    "ecommerce",
-    "headless",
-    "medusa"
-  ],
-  "devDependencies": {
-    "@babel/cli": "^7.18.10",
-    "@babel/core": "^7.18.10",
-    "@babel/preset-typescript": "^7.14.5",
-    "babel-preset-medusa-package": "^1.1.19"
-  }
+    "repository": "https://github.com/medusajs/medusa-starter-default.git",
+    "keywords": [
+        "sqlite",
+        "ecommerce",
+        "headless",
+        "medusa"
+    ],
+    "devDependencies": {
+        "@babel/cli": "^7.18.10",
+        "@babel/core": "^7.18.10",
+        "@babel/preset-typescript": "^7.14.5",
+        "babel-preset-medusa-package": "^1.1.19",
+        "typescript": "^4.5.5",
+        "nodemon": "^2.0.15",
+        "ts-node": "^10.7.0"
+    }
 }

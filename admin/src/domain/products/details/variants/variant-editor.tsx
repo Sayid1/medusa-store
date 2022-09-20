@@ -80,6 +80,7 @@ const VariantEditor = ({
   }, [variant, store])
 
   const handleSave = (data) => {
+    console.log("data", data)
     if (!data.prices) {
       focusByName("add-price")
       return

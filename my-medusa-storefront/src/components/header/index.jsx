@@ -55,7 +55,7 @@ export default function Example() {
             </div>
             <StoreNavigation open={open} setOpen={setOpen} />
 
-            <div className="ml-auto flex items-center bg-slate-900" onMouseEnter={() => {console.log(open)}}>
+            <div className="ml-auto flex items-center">
 
               <div className="hidden lg:ml-8 lg:flex">
                   <RegionPopover />

@@ -53,7 +53,7 @@ export type TableProps = {
 type TableElement<T> = React.ForwardRefExoticComponent<T> &
   React.RefAttributes<unknown>
 
-type TableType = {
+export type TableType = {
   Head: TableElement<React.HTMLAttributes<HTMLTableSectionElement>>
   HeadRow: TableElement<React.HTMLAttributes<HTMLTableRowElement>>
   HeadCell: TableElement<React.ThHTMLAttributes<HTMLTableCellElement>>

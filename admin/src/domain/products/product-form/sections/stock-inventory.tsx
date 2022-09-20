@@ -70,7 +70,7 @@ const StockAndInventory = () => {
                 label="允许延期交货"
               />
               <IconTooltip
-                content={"选中后，尽管产品已售罄，但仍可购买该产品。"}
+                content={"选中后，即使产品已售罄，但仍可购买该产品。"}
               />
             </div>
           </div>

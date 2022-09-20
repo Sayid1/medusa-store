@@ -9,12 +9,14 @@ import Grid from "../components/utility/grid"
 import SearchEngineOptimization from "../components/utility/seo"
 import Home from "../components/home"
 import { useCollections } from "../hooks/use-collections"
+import { useMedusa } from "../hooks/use-medusa"
 
 const IndexPage = ({ data }) => {
   const { products, collections } = data
   const prods = data.products.edges.map(edge => edge.node)
-  const collectionPreviews = useCollections(collections, products)
-  console.log("collections", collections)
+  const { rootCollections, childCollections } = useCollections()
+  console.log("children", childCollections)
+  // console.log("products", products)
   // window.fbAsyncInit = function () {
   //   window.FB.init({
   //     appId: "631318755004386",
@@ -95,7 +97,7 @@ const IndexPage = ({ data }) => {
             <ArrowLongRightIcon className="w-6 h-6 ml-2" aria-hidden />
           </Link>
           <div className="pl-[length:var(--default-pl)] mb-12 grid grid-flow-col auto-cols-min gap-5 overflow-x-auto overflow-y-hidden">
-            {collectionPreviews.map(collection => (
+            {childCollections.map(collection => (
               <CollectionPreview key={collection.id} collection={collection} />
             ))}
           </div>
@@ -133,9 +135,7 @@ export const query = graphql`
           id
           title
           handle
-          metadata {
-            image
-          }
+          parent_id
         }
       }
     }
