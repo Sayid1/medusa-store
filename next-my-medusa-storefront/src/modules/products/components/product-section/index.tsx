@@ -49,7 +49,7 @@ const ProductSection = ({
           aria-hidden="true"
         />
       </summary>
-      <div className="px-4">{children}</div>
+      <div className="px-4 pt-6">{children}</div>
     </details>
   )
 }

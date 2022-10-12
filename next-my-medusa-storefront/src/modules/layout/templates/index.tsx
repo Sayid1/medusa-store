@@ -2,7 +2,7 @@ import Footer from "@modules/layout/templates/footer"
 import Nav from "@modules/layout/templates/nav"
 import React from "react"
 
-const Layout: React.FC = ({ children }) => {
+const Layout = ({ children }: React.PropsWithChildren<any>) => {
   return (
     <div className="bg-[color:var(--primary-bg)] relative">
       <div className="absolute z-0 inset-0 overflow-hidden">

@@ -23,7 +23,7 @@ const ProductImages = ({ images }: ImageGalleryProps) => {
 
   return (
     <>
-      <div className="relative flex justify-center rounded-lg overflow-hidden">
+      <div className="relative flex justify-center rounded-lg overflow-hidden sticky top-[6.5rem]">
         {images.length > 1 && (
           <>
             {/* <span className="text-sm absolute right-4 top-3 z-10">

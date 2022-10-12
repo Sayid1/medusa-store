@@ -2,7 +2,7 @@ import { useProductActions } from "@lib/context/product-context"
 import useProductPrice from "@lib/hooks/use-product-price"
 import Button from "@modules/common/components/button"
 import OptionSelect from "@modules/products/components/option-select"
-import ProductSection from "@modules/products/components/product-section"
+import BoardStyle from "../neon-sign-boardstyle"
 import clsx from "clsx"
 import Link from "next/link"
 import React, { useMemo } from "react"
@@ -38,23 +38,23 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
       <p className="text-base-regular">{product.description}</p>
 
       {product.variants.length > 1 && (
-        <ProductSection index={1} title={"Select Size"} open>
-          <div className="my-8 flex flex-col gap-y-6">
-            {product.options.map((option) => {
-              return (
-                <div key={option.id}>
-                  <OptionSelect
-                    option={option}
-                    current={options[option.id]}
-                    updateOption={updateOptions}
-                    title={option.title}
-                  />
-                </div>
-              )
-            })}
-          </div>
-        </ProductSection>
+        <div className="mt-8 mb-4 flex flex-col gap-y-6">
+          {product.options.map((option) => {
+            return (
+              <div key={option.id}>
+                <OptionSelect
+                  option={option}
+                  current={options[option.id]}
+                  updateOption={updateOptions}
+                  title={option.title}
+                />
+              </div>
+            )
+          })}
+        </div>
       )}
+
+      <BoardStyle />
 
       <div className="mb-4">
         {selectedPrice ? (
