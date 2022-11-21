@@ -13,15 +13,15 @@ const CheckoutForm = () => {
   return (
     <div>
       <div className="w-full grid grid-cols-1 gap-y-8">
-        <div>
+        <div className="rounded-xl overflow-hidden">
           <Addresses />
         </div>
 
-        <div>
+        <div className="rounded-xl overflow-hidden">
           <Shipping cart={cart} />
         </div>
 
-        <div>
+        <div className="rounded-xl overflow-hidden">
           <Payment />
         </div>
       </div>

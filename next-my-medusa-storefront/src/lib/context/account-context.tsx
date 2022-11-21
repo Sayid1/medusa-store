@@ -4,6 +4,8 @@ import { useMeCustomer } from "medusa-react"
 import { useRouter } from "next/router"
 import React, { createContext, useCallback, useContext, useState } from "react"
 import { useMutation } from "react-query"
+import { googleLogout } from "@react-oauth/google"
+import { FacebookLoginClient } from "@greatsumini/react-facebook-login"
 
 export enum LOGIN_VIEW {
   SIGN_IN = "sign-in",
@@ -49,9 +51,12 @@ export const AccountProvider = ({ children }: AccountProviderProps) => {
   const useDeleteSession = useMutation("delete-session", handleDeleteSession)
 
   const handleLogout = () => {
+    const from = customer?.metadata.from
+    FacebookLoginClient.logout(() => {})
     useDeleteSession.mutate(undefined, {
       onSuccess: () => {
-        remove()
+        if (from === "google") googleLogout()
+        else if (from === "facebook") remove()
         loginView[1](LOGIN_VIEW.SIGN_IN)
         router.push("/")
       },

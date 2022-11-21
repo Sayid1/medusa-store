@@ -10,16 +10,16 @@ type FontSteppProps = {
 const FontStep = (props: FontSteppProps) => {
   return (
     <>
-      <div className="grid grid-cols-4 gap-1 mt-4">
+      <div className="grid grid-cols-4 gap-1 mt-4 mb-2">
         {FONTS.map((fontConfig) => (
           <div
             key={fontConfig.font}
             onClick={() => props.onChange(fontConfig)}
             className={clsx(
-              "flex justify-center items-center h-12 px-2 mb-2 mr-2 rounded-md overflow-hidden hover:border hover:border-black hover:border-solid cursor-pointer sign-text-font-" +
+              "flex justify-center items-center h-12 px-2 mb-2 mr-2 rounded-md overflow-hidden hover:border hover:border-[#9C1AA8] hover:border-solid cursor-pointer sign-text-font-" +
                 fontConfig.font,
               {
-                "bg-black text-white": fontConfig.font === props.font?.font,
+                "bg-[#9C1AA8] text-white": fontConfig.font === props.font?.font,
               }
             )}
           >

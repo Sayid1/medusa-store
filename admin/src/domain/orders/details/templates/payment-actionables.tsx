@@ -16,7 +16,7 @@ export const PaymentActionables = ({
   const { payment_status } = order!
 
   // Default label and action
-  let label = "Capture payment"
+  let label = "Cap22ture payment"
   let action = () => {
     capturePayment.mutate(void {}, {
       onSuccess: () =>

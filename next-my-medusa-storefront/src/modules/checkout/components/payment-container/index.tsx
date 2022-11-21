@@ -2,7 +2,7 @@ import { PaymentSession } from "@medusajs/medusa"
 import Radio from "@modules/common/components/radio"
 import clsx from "clsx"
 import React from "react"
-import PaymentStripe from "../payment-stripe"
+// import PaymentStripe from "../payment-stripe"
 import PaymentTest from "../payment-test"
 
 type PaymentContainerProps = {
@@ -19,7 +19,8 @@ const PaymentInfoMap: Record<string, { title: string; description: string }> = {
   },
   paypal: {
     title: "PayPal",
-    description: "Secure payment with PayPal",
+    description:
+      "Safe payment  online,credit card needed. PayPal account  is not necessary.",
   },
   manual: {
     title: "Test payment",
@@ -36,23 +37,33 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
   return (
     <div
       className={clsx(
-        "flex flex-col gap-y-4 border-b border-gray-200 last:border-b-0",
+        "pl-2 flex flex-col gap-y-4 border-b border-gray-200 last:border-b-0",
         {
-          "bg-gray-50": selected,
+          " bg-gradient-radial from-[#e61a5e] to-[#5e1ae6]": selected,
         }
       )}
     >
       <button
-        className={"grid grid-cols-[12px_1fr] gap-x-4 py-4 px-8"}
+        className={"grid grid-cols-[12px_1fr] gap-x-4 pt-4 px-8"}
         onClick={setSelected}
         disabled={disabled}
       >
         <Radio checked={selected} />
         <div className="flex flex-col text-left">
-          <h3 className="text-base-semi leading-none text-gray-900">
+          <h3
+            className={clsx("text-xl leading-none ", {
+              "text-white": selected,
+              "text-gray-900": !selected,
+            })}
+          >
             {PaymentInfoMap[paymentSession.provider_id].title}
           </h3>
-          <span className="text-gray-700 text-small-regular mt-2">
+          <span
+            className={clsx("text-base mt-1", {
+              "text-white": selected,
+              "text-gray-700": !selected,
+            })}
+          >
             {PaymentInfoMap[paymentSession.provider_id].description}
           </span>
           {selected && (
@@ -72,12 +83,12 @@ const PaymentElement = ({
   paymentSession: PaymentSession
 }) => {
   switch (paymentSession.provider_id) {
-    case "stripe":
-      return (
-        <div className="pt-8 pr-7">
-          <PaymentStripe />
-        </div>
-      )
+    // case "stripe":
+    //   return (
+    //     <div className="pt-8 pr-7">
+    //       <PaymentStripe />
+    //     </div>
+    //   )
     case "manual":
       // We only display the test payment form if we are in a development environment
       return process.env.NODE_ENV === "development" ? <PaymentTest /> : null

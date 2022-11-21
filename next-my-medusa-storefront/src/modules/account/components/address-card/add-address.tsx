@@ -14,7 +14,7 @@ type FormValues = {
   first_name: string
   last_name: string
   city: string
-  country_code: string
+  country_code: { name: string; value: string }
   postal_code: string
   province?: string
   address_1: string
@@ -30,6 +30,7 @@ const AddAddress: React.FC = () => {
 
   const { refetchCustomer } = useAccount()
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -41,7 +42,7 @@ const AddAddress: React.FC = () => {
       first_name: "",
       last_name: "",
       city: "",
-      country_code: "",
+      country_code: {},
       postal_code: "",
       address_1: "",
       address_2: "",
@@ -63,13 +64,13 @@ const AddAddress: React.FC = () => {
       address_1: data.address_1,
       address_2: data.address_2 || "",
       city: data.city,
-      country_code: data.country_code,
+      country_code: data.country_code.value,
       province: data.province || "",
       postal_code: data.postal_code,
       phone: data.phone || "",
       metadata: {},
     }
-
+    console.log(payload)
     medusaClient.customers.addresses
       .addAddress({ address: payload })
       .then(() => {
@@ -89,7 +90,7 @@ const AddAddress: React.FC = () => {
         className="border border-gray-200 p-5 min-h-[220px] h-full w-full flex flex-col justify-between"
         onClick={open}
       >
-        <span className="text-base-semi">New address</span>
+        <span className="text-xl">New address</span>
         <Plus size={24} />
       </button>
 
@@ -160,8 +161,10 @@ const AddAddress: React.FC = () => {
               autoComplete="address-level1"
             />
             <CountrySelect
-              {...register("country_code", { required: true })}
-              autoComplete="country"
+              control={control}
+              name="country_code"
+              // {...register("country_code", { required: true })}
+              // autoComplete="country"
             />
             <Input
               label="Phone"
@@ -178,6 +181,7 @@ const AddAddress: React.FC = () => {
           <Button
             className="!bg-gray-200 !text-gray-900 !border-gray-200 min-h-0"
             onClick={handleClose}
+            variant="secondary"
           >
             Cancel
           </Button>

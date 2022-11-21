@@ -6,15 +6,17 @@ import { StoreGetProductsParams } from "@medusajs/medusa"
 import ProductPreview from "@modules/products/components/product-preview"
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
 import { useCart } from "medusa-react"
-import { useEffect, useMemo } from "react"
+import { useEffect, useMemo, TouchEvent } from "react"
 import { useInView } from "react-intersection-observer"
 import { useInfiniteQuery } from "react-query"
 
 type InfiniteProductsType = {
   params: StoreGetProductsParams
+  onPrev: () => void
+  onNext: () => void
 }
 
-const InfiniteProducts = ({ params }: InfiniteProductsType) => {
+const InfiniteProducts = ({ params, onPrev, onNext }: InfiniteProductsType) => {
   const { cart } = useCart()
 
   const { ref, inView } = useInView()
@@ -52,8 +54,61 @@ const InfiniteProducts = ({ params }: InfiniteProductsType) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, hasNextPage])
 
+  let initialX: number | undefined
+  let initialY: number | undefined
+  let moveX: number | undefined
+  let moveY: number | undefined
+
+  const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    initialX = e.touches[0].clientX
+    initialY = e.touches[0].clientY
+  }
+  const onTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    moveX = e.touches[0].clientX
+    moveY = e.touches[0].clientY
+  }
+  const onTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    if (!initialX || !initialY || !moveX || !moveY) {
+      return
+    }
+    var diffX = initialX - moveX
+    var diffY = initialY - moveY
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      // sliding horizontally
+      if (diffX > 0) {
+        // swiped left
+        console.log("swiped left")
+        onNext()
+      } else {
+        onPrev()
+        // swiped right
+        console.log("swiped right")
+      }
+    } else {
+      // sliding vertically
+      if (diffY > 0) {
+        // swiped up
+        console.log("swiped up")
+      } else {
+        // swiped down
+        console.log("swiped down")
+      }
+    }
+
+    initialX = undefined
+    initialY = undefined
+    moveX = undefined
+    moveY = undefined
+  }
+
   return (
-    <div className="flex-1 content-container">
+    <div
+      className="flex-1 content-container"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8 flex-1">
         {previews.map((p) => (
           <li key={p.id}>

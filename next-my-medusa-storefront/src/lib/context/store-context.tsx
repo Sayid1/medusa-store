@@ -13,6 +13,7 @@ import { useCartDropdown } from "./cart-dropdown-context"
 interface VariantInfoProps {
   variantId: string
   quantity: number
+  metadata: Record<string, unknown>
 }
 
 interface LineInfoProps {
@@ -48,6 +49,7 @@ const CART_KEY = "medusa_cart_id"
 
 export const StoreProvider = ({ children }: StoreProps) => {
   const { cart, setCart, createCart, updateCart } = useCart()
+
   const [countryCode, setCountryCode] = useState<string | undefined>(undefined)
   const { timedOpen } = useCartDropdown()
   const addLineItem = useCreateLineItem(cart?.id!)
@@ -56,6 +58,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
 
   const storeRegion = (regionId: string, countryCode: string) => {
     if (!IS_SERVER) {
+      console.log("storeRegion")
       localStorage.setItem(
         "medusa_region",
         JSON.stringify({ regionId, countryCode })
@@ -92,6 +95,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       },
       {
         onSuccess: ({ cart }) => {
+          console.log("setCart1")
           setCart(cart)
           storeCart(cart.id)
           storeRegion(regionId, countryCode)
@@ -106,6 +110,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
   }
 
   const ensureRegion = (region: Region) => {
+    console.log("ensureRegion", region)
     if (!IS_SERVER) {
       const { regionId, countryCode } = getRegion() || {
         regionId: region.id,
@@ -145,6 +150,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       { region_id: regionId },
       {
         onSuccess: ({ cart }) => {
+          console.log("setCart2", cart)
           setCart(cart)
           storeCart(cart.id)
           ensureRegion(cart.region)
@@ -169,6 +175,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       },
       {
         onSuccess: ({ cart }) => {
+          console.log("setCart2")
           setCart(cart)
           storeCart(cart.id)
           ensureRegion(cart.region)
@@ -203,6 +210,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
           return
         }
 
+        console.log("setCart2")
         setCart(cartRes)
         ensureRegion(cartRes.region)
       } else {
@@ -216,20 +224,16 @@ export const StoreProvider = ({ children }: StoreProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const addItem = ({
-    variantId,
-    quantity,
-  }: {
-    variantId: string
-    quantity: number
-  }) => {
+  const addItem = ({ variantId, quantity, metadata }: VariantInfoProps) => {
     addLineItem.mutate(
       {
         variant_id: variantId,
         quantity: quantity,
+        metadata,
       },
       {
         onSuccess: ({ cart }) => {
+          console.log("setCart2")
           setCart(cart)
           storeCart(cart.id)
           timedOpen()
@@ -248,6 +252,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       },
       {
         onSuccess: ({ cart }) => {
+          console.log("setCart2")
           setCart(cart)
           storeCart(cart.id)
         },
@@ -272,6 +277,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       },
       {
         onSuccess: ({ cart }) => {
+          console.log("setCart2")
           setCart(cart)
           storeCart(cart.id)
         },

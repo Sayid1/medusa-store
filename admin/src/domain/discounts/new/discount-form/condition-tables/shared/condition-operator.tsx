@@ -21,13 +21,13 @@ const ConditionOperator: React.FC<ConditionOperatorProps> = ({
         className="w-full"
         label="In"
         value={DiscountConditionOperator.IN}
-        description="Applies to the selected items."
+        description="适用于选定的项目。"
       />
       <RadioGroup.Item
         className="w-full"
         label="Not in"
         value={DiscountConditionOperator.NOT_IN}
-        description="Applies to all items except the selected items."
+        description="适用于除选定项目之外的所有项目。"
       />
     </RadioGroup.Root>
   )

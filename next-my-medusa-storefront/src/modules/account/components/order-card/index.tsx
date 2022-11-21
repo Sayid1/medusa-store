@@ -22,8 +22,8 @@ const OrderCard = ({ order }: OrderCardProps) => {
 
   return (
     <div className="bg-white flex flex-col">
-      <div className="uppercase text-large-semi mb-1">#{order.display_id}</div>
-      <div className="flex items-center divide-x divide-gray-200 text-small-regular text-gray-700">
+      {/* <div className="uppercase text-large-semi mb-1">#{order.display_id}</div> */}
+      <div className="flex items-center divide-x divide-gray-200 text-lg text-gray-700">
         <span className="pr-2">
           {new Date(order.created_at).toDateString()}
         </span>
@@ -47,7 +47,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
                 images={[]}
                 size="full"
               />
-              <div className="flex items-center text-small-regular text-gray-700">
+              <div className="flex items-center text-base text-gray-700">
                 <span className="text-gray-900 font-semibold">{i.title}</span>
                 <span className="ml-2">x</span>
                 <span>{i.quantity}</span>
@@ -57,10 +57,10 @@ const OrderCard = ({ order }: OrderCardProps) => {
         })}
         {numberOfProducts > 4 && (
           <div className="w-full h-full flex flex-col items-center justify-center">
-            <span className="text-small-regular text-gray-700">
+            <span className="text-base text-gray-700">
               + {numberOfLines - 4}
             </span>
-            <span className="text-small-regular text-gray-700">more</span>
+            <span className="text-basetext-gray-700">more</span>
           </div>
         )}
       </div>

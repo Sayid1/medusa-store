@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline"
 
 interface ProductSectionProps {
@@ -6,23 +6,29 @@ interface ProductSectionProps {
   index: number
   children: React.ReactNode
   open: boolean
+  selected?: React.ReactNode
 }
 
 const ProductSection = ({
   title,
   index,
   children,
+  selected,
   open = false,
 }: ProductSectionProps) => {
+  const [open1, setOpen1] = useState(open)
   return (
     <details
       className="group shadow-xl rounded-xl overflow-hidden mb-6 pb-6"
       open={open}
     >
-      <summary className=" pr-4 bg-black h-[50px] flex items-center justify-between text-white flex cursor-pointer select-none text-left leading-7">
+      <summary
+        onClick={() => setOpen1(!open1)}
+        className=" pr-4 bg-[#9C1AA8] h-[50px] flex items-center justify-between text-white flex cursor-pointer select-none text-left leading-7"
+      >
         <div className="flex h-full items-center">
           <span
-            className="inline-block relative w-10 h-full pl-5 text-2xl flex items-center bg-[color:var(--fourth-color)] mr-12
+            className="inline-block relative w-10 h-full pl-5 text-3xl flex items-center text-[#9C1AA8] bg-[color:var(--fourth-color)] mr-12
             after:content-['']
             after:absolute
             after:right-[-25px]
@@ -42,6 +48,12 @@ const ProductSection = ({
               {title}
             </span>
           </span>
+
+          {!open1 && (
+            <span className="ml-4 text-lg font-thin text-[#FEEE10]">
+              {selected}
+            </span>
+          )}
         </div>
         <PlusIcon className="w-6 h-6 group-open:hidden" aria-hidden="true" />
         <XMarkIcon

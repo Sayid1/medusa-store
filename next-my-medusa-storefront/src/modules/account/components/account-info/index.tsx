@@ -39,7 +39,7 @@ const AccountInfo = ({
   }, [isSuccess, close])
 
   return (
-    <div className="text-small-regular">
+    <div className="text-lg">
       <div className="flex items-end justify-between">
         <div className="flex flex-col">
           <span className="uppercase text-gray-700">{label}</span>
@@ -117,6 +117,7 @@ const AccountInfo = ({
                 isLoading={isLoading}
                 className="w-full small:max-w-[140px]"
                 type="submit"
+                variant="primary"
               >
                 Save changes
               </Button>

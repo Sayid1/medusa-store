@@ -29,7 +29,7 @@ const StepContainer = ({
         {...props}
       >
         <div className="text-xl-semi flex items-center gap-x-4 px-8 pb-6 pt-8">
-          <div className="bg-gray-900 w-8 h-8 rounded-full text-white flex justify-center items-center text-sm">
+          <div className="font-DIN bg-[#9C1AA8] w-8 h-8 rounded-full text-white flex justify-center items-center text-xl">
             {index}
           </div>
           <h2>{title}</h2>
@@ -38,7 +38,7 @@ const StepContainer = ({
           <Disclosure.Panel
             static
             className={clsx(
-              "transition-[max-height,opacity] duration-700 ease-in-out overflow-hidden",
+              "bg-gray-50 transition-[max-height,opacity] duration-700 ease-in-out overflow-hidden",
               {
                 "max-h-[9999px] opacity-100": !state,
                 "max-h-0 opacity-0": state,

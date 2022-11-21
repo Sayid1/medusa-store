@@ -14,13 +14,13 @@ function convertPxToNumber(str: string) {
 
 const ImagePreview = (props: ImagePreviewProps) => {
   return (
-    <div className=" sticky top-[6.5rem]">
+    <div className="sticky top-[5.5rem]">
       <div className="relative rounded-xl pt-[100%] bg-center bg-no-repeat bg-cover bg-black bg-[url('/imgs/background3.jpg')]">
         <div className="absolute top-[30px] right-[30px] bottom-[30px] left-[30px]">
-          <Draggable bounds="parent" defaultPosition={{ x: 130, y: 25 }}>
+          <Draggable bounds="parent" defaultPosition={{ x: 0, y: 0 }}>
             <div
               className={
-                "cursor-grab inline-block text-white text-[115px] sign-text-font-" +
+                "w-full text-center break-words cursor-grab inline-block text-white text-[115px] sign-text-font-" +
                 props.font?.font
               }
               style={{

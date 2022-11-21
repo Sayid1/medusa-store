@@ -13,7 +13,7 @@ const ItemsTemplate = ({ items, region }: ItemsTemplateProps) => {
       <div className="border-b border-gray-200 pb-3 flex items-center">
         <h1 className="text-xl-semi">Shopping Bag</h1>
       </div>
-      <div className="grid grid-cols-1 gap-y-8 py-8">
+      <div className="grid grid-cols-1 pb-8 divide-y">
         {items && region
           ? items
               .sort((a, b) => {

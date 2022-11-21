@@ -3,7 +3,7 @@ import { IconProps } from "types/icon"
 
 const Spinner: React.FC<IconProps> = ({
   size = "16",
-  color = "currentColor",
+  color = "#9C1AA8",
   ...attributes
 }) => {
   return (

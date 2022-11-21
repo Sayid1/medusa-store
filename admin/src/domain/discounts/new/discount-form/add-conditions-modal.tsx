@@ -49,9 +49,9 @@ const AddConditionsModal = ({
     <LayeredModal context={layeredModalContext} handleClose={onClose}>
       <Modal.Body className="h-[calc(100vh-134px)] flex flex-col">
         <Modal.Header handleClose={onClose}>
-          <span className="inter-xlarge-semibold">Add Conditions</span>
+          <span className="inter-xlarge-semibold">添加条件</span>
           <span className="font-semibold text-grey-90 mt-6 flex items-center gap-1">
-            Choose a condition type{" "}
+            选择条件类型{" "}
             <IconTooltip content="You can only add one of each type of condition" />
           </span>
         </Modal.Header>
@@ -62,7 +62,7 @@ const AddConditionsModal = ({
           ) : (
             <div className="flex flex-col items-center justify-center flex-1 h-full">
               <span className="inter-base-regular text-grey-40">
-                Can't add anymore conditions
+                无法再添加条件
               </span>
             </div>
           )}
@@ -76,7 +76,7 @@ const AddConditionsModal = ({
               size="small"
               onClick={onClose}
             >
-              Cancel
+              取消
             </Button>
             <Button
               onClick={() => {
@@ -89,7 +89,7 @@ const AddConditionsModal = ({
               className="w-32 text-small justify-center"
               variant="primary"
             >
-              Save
+              保存
             </Button>
           </div>
         </Modal.Footer>

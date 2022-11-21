@@ -10,12 +10,12 @@ const AccountNav = () => {
 
   return (
     <div>
-      <div className="small:hidden">
+      <div className="small:hidden pl-2">
         {route !== "/account" && (
           <Link href="/account">
             <a className="flex items-center gap-x-2 text-small-regular py-2">
-              <ChevronDown className="transform rotate-90" />
-              <span>Account</span>
+              <ChevronDown className="transform rotate-90 w-6 h-6" />
+              <span className="text-2xl">Account</span>
             </a>
           </Link>
         )}
@@ -23,10 +23,10 @@ const AccountNav = () => {
       <div className="hidden small:block">
         <div>
           <div className="py-4">
-            <h3 className="text-base-semi">Account</h3>
+            <h3 className="text-2xl text-center">Account</h3>
           </div>
-          <div className="text-base-regular">
-            <ul className="flex mb-0 justify-start items-start flex-col gap-y-4">
+          <div className="text-xl">
+            <ul className="flex mb-0 justify-start items-center flex-col gap-y-4">
               <li>
                 <AccountNavLink href="/account" route={route}>
                   Overview
@@ -72,7 +72,7 @@ const AccountNavLink = ({ href, route, children }: AccountNavLinkProps) => {
     <Link href={href}>
       <a
         className={clsx("text-gray-700", {
-          "text-gray-900 font-semibold": active,
+          "text-[#9C1AA8] font-semibold": active,
         })}
       >
         {children}

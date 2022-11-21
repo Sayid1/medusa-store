@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react"
+import React, { useState, Fragment, useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { UseControllerProps, Controller } from "react-hook-form"
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/solid"
@@ -10,14 +10,23 @@ type Option = {
   id: string
   name: string
 }
-type SelectProps = {
+export type SelectProps = {
   options: Array<Option>
-  title: React.ReactNode
+  title?: React.ReactNode
+  borderBlack?: Boolean
+  filter?: Boolean
   // onChange?: (option: Option) => void
 } & UseControllerProps<any> &
   React.SelectHTMLAttributes<Option>
 
-const Select = (props: SelectProps) => {
+const Select = ({
+  name,
+  control,
+  title,
+  options,
+  filter = false,
+  borderBlack = true,
+}: SelectProps) => {
   let [trigger, container] = usePopper({
     placement: "bottom-start",
     strategy: "fixed",
@@ -34,11 +43,21 @@ const Select = (props: SelectProps) => {
     ],
   })
 
+  const [val, setVal] = useState("")
+  const [filterOptions, setFilterOptions] = useState(options)
+
+  useEffect(() => {
+    const o = options.filter((option) =>
+      option.name.toLocaleLowerCase().includes(val.toLocaleLowerCase())
+    )
+    setFilterOptions(o)
+  }, [val, options])
+
   return (
     <Controller
-      control={props.control}
-      name={props.name}
-      render={({ field, fieldState, formState }) => {
+      control={control}
+      name={name}
+      render={({ field }) => {
         const onChange = (option: Option) => {
           field.onChange(option)
         }
@@ -46,22 +65,31 @@ const Select = (props: SelectProps) => {
           <Listbox value={field.value} onChange={onChange}>
             {({ open }) => (
               <>
-                <Listbox.Label>{props.title}</Listbox.Label>
+                {title && (
+                  <Listbox.Label className="text-xl text-[#9C1AA8]">
+                    {title}
+                  </Listbox.Label>
+                )}
                 <div className="relative mt-1">
                   <Listbox.Button
                     ref={
                       trigger as unknown as React.LegacyRef<HTMLButtonElement>
                     }
-                    className="h-10 relative w-full cursor-default rounded-md border border-black bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black sm:text-sm"
+                    className={clsx(
+                      "h-10 relative w-full cursor-pointer rounded-md border bg-white pl-3 pr-10 text-left shadow-sm focus:border-[#9C1AA8] focus:outline-none focus:ring-1 focus:ring-[#9C1AA8] sm:text-sm",
+                      {
+                        "border-[#9C1AA8]": borderBlack,
+                      }
+                    )}
                   >
                     <span className="flex items-center">
-                      <span className="ml-3 block truncate font-[proxima-nova]">
+                      <span className="ml-3 block truncate text-lg">
                         {field.value?.name}
                       </span>
                     </span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                       <ChevronUpDownIcon
-                        className="h-5 w-5 text-black"
+                        className="h-5 w-5 text-[#9C1AA8]"
                         aria-hidden="true"
                       />
                     </span>
@@ -75,8 +103,18 @@ const Select = (props: SelectProps) => {
                       leaveTo="opacity-0"
                       ref={container}
                     >
-                      <Listbox.Options className="absolute z-1 mt-1 max-h-56 w-20 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                        {props.options.map((option) => {
+                      <Listbox.Options className="absolute z-[1000] mt-1 max-h-56 w-20 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-[#9C1AA8] ring-opacity-5 focus:outline-none sm:text-sm">
+                        {filter && (
+                          <li className="flex">
+                            <input
+                              placeholder="find..."
+                              type="text"
+                              onInput={(val) => setVal(val.currentTarget.value)}
+                              className="pl-6 w-full text-lg block h-[40px] rounded-md border-gray-300 shadow-sm outline-none"
+                            />
+                          </li>
+                        )}
+                        {filterOptions.map((option) => {
                           const selected = field.value?.id === option.id
                           return (
                             <Listbox.Option
@@ -84,9 +122,9 @@ const Select = (props: SelectProps) => {
                               className={({ active }) =>
                                 clsx(
                                   active || selected
-                                    ? "text-white bg-black"
+                                    ? "text-white bg-[#9C1AA8]"
                                     : "text-gray-900",
-                                  "relative cursor-default select-none py-2 pl-3 pr-9"
+                                  "relative cursor-pointer select-none py-2 pl-3 pr-9"
                                 )
                               }
                               value={option}
@@ -98,7 +136,7 @@ const Select = (props: SelectProps) => {
                                       selected
                                         ? "font-semibold"
                                         : "font-normal",
-                                      "ml-3 block truncate font-[proxima-nova]"
+                                      "ml-3 block truncate text-lg"
                                     )}
                                   >
                                     {option.name}

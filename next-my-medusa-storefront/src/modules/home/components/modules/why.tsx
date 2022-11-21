@@ -12,10 +12,13 @@ const Why = () => {
           </span>
         }
       />
-      <div className="mb-12 pr-5 grid grid-cols-1 lg:grid-cols-2 gap-5 text-[color:var(--secondary-color)] font-sans">
+      <div className="mb-12 pr-5 grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div>
-          <h3 className="mb-2">Save time. Ship faster.</h3>
-          <p className="text-base">
+          <h3 className="mb-2 text-xl">
+            One of the most well-known advantages of manufacturing in China is
+            that it&apos;s cheaper than making goods in many other countries.
+          </h3>
+          <p className="text-lg">
             It’s no secret that robust UI components are tricky to build.
             Nailing accessibility details and complex logic sucks time away from
             product feature development. With Radix, you can focus on your
@@ -23,8 +26,8 @@ const Why = () => {
           </p>
         </div>
         <div>
-          <h3 className="mb-2">Save time. Ship faster.</h3>
-          <p className="text-base text-[color:var(--secondary-color)]">
+          <h3 className="mb-2 text-xl">Save time. Ship faster.</h3>
+          <p className="text-lg">
             It’s no secret that robust UI components are tricky to build.
             Nailing accessibility details and complex logic sucks time away from
             product feature development. With Radix, you can focus on your

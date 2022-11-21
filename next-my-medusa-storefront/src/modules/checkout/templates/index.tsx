@@ -9,11 +9,11 @@ import CheckoutSummary from "./checkout-summary"
 const CheckoutTemplate = () => {
   return (
     <CheckoutProvider>
-      <div className="bg-gray-100 relative small:min-h-screen">
-        <div className="h-16 bg-white">
+      <div className="bg-gray-100 relative">
+        {/* <div className="h-16 bg-white">
           <nav className="flex items-center h-full justify-between content-container">
             <Link href="/cart">
-              <a className="text-small-semi text-gray-700 flex items-center gap-x-2 uppercase flex-1 basis-0">
+              <a className="text-xl font-semibold text-gray-700 flex items-center gap-x-2 uppercase flex-1 basis-0">
                 <ChevronDown className="rotate-90" size={16} />
                 <span className="mt-px hidden small:block">
                   Back to shopping cart
@@ -22,21 +22,21 @@ const CheckoutTemplate = () => {
               </a>
             </Link>
             <Link href="/">
-              <a className="text-xl-semi">ACME</a>
+              <a className="text-xl-semi">DOMOJT</a>
             </Link>
             <div className="flex-1 basis-0" />
           </nav>
-        </div>
+        </div> */}
         <div className="relative">
           <CheckoutLoader />
-          <div className="grid grid-cols-1 small:grid-cols-[1fr_416px] gap-y-8 content-container gap-x-8 py-12">
+          <div className="grid grid-cols-1 small:grid-cols-[1fr_416px] gap-y-8 content-container gap-x-8 py-6 md:py-12">
             <CheckoutForm />
             <CheckoutSummary />
           </div>
         </div>
-        <div className="py-4 w-full flex items-center justify-center">
+        {/* <div className="py-4 w-full flex items-center justify-center">
           <MedusaCTA />
-        </div>
+        </div> */}
       </div>
     </CheckoutProvider>
   )

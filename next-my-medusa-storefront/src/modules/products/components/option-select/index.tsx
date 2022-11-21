@@ -2,7 +2,7 @@ import { onlyUnique } from "@lib/util/only-unique"
 import { ProductOption } from "@medusajs/medusa"
 import ProductSection from "@modules/products/components/product-section"
 import clsx from "clsx"
-import React from "react"
+import React, { useEffect } from "react"
 
 type OptionSelectProps = {
   option: ProductOption
@@ -20,22 +20,27 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
   const filteredOptions = option.values.map((v) => v.value).filter(onlyUnique)
 
   return (
-    <ProductSection index={1} title={"Select " + title} open>
+    <ProductSection index={1} title={"Select " + title} open selected={current}>
       <div className="flex flex-col gap-y-3">
-        {/* <span className="text-base-semi">Select {}</span> */}
-        <div className="grid grid-cols-3 lg:grid-cols-6 gap-2">
+        {/* <label className="block">SELECT {title.toUpperCase()}</label> */}
+        <div className="flex gap-4 flex-wrap">
           {filteredOptions.map((v) => {
             return (
-              <button
-                onClick={() => updateOption({ [option.id]: v })}
+              <div
                 key={v}
+                onClick={() => updateOption({ [option.id]: v })}
                 className={clsx(
-                  "border-gray-200 rounded-md border text-xsmall-regular h-[50px] transition-all duration-200",
-                  { "border-gray-900": v === current }
+                  "flex-1 flex flex-col items-center justify-center w-[calc(33%_-_1rem)] rounded-xl h-[60px] text-lg font-semibold bg-[color:var(--secondary-bg-color)] cursor-pointer",
+                  {
+                    "!bg-[#9C1AA8] !text-white": v === current,
+                    "border-2 hover:border-2 hover:border-[#9C1AA8] hover:border-solid":
+                      v !== current,
+                  }
                 )}
               >
                 {v}
-              </button>
+                {/* <div className=" mt-1">${s.price}</div> */}
+              </div>
             )
           })}
         </div>

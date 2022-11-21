@@ -24,22 +24,30 @@ const CustomStep = ({
 
   return (
     <>
+      <div onClick={() => window.Tawk_API.maximize()}>自定义宽高？联系我们</div>
       <ul className="flex items-center">
         {steps.map((step, index) => (
           <>
             <li
               onClick={() => changeStep(step)}
               key={step}
-              className={clsx("flex-1 rounded-md font-bold text-center py-4", {
-                "bg-black text-white cursor-default": step === currStep,
-                " bg-[color:var(--secondary-bg-color)] cursor-pointer text-black":
-                  step !== currStep,
-              })}
+              className={clsx(
+                "flex-1 text-2xl rounded-md font-thin text-center py-4",
+                {
+                  "bg-[#9C1AA8] text-white cursor-default": step === currStep,
+                  " bg-[color:var(--secondary-bg-color)] cursor-pointer text-black":
+                    step !== currStep,
+                }
+              )}
             >
               {step}
             </li>
             {index < steps.length - 1 && (
-              <ChevronRightIcon className="h-6 w-6 mx-4" aria-hidden="true" />
+              <ChevronRightIcon
+                stroke="#9C1AA8"
+                className="h-6 w-6 mx-4"
+                aria-hidden="true"
+              />
             )}
           </>
         ))}

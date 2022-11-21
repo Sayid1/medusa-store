@@ -33,12 +33,12 @@ const useConditionModalItems = ({
   const items: ConditionItem[] = useMemo(
     () => [
       {
-        label: "Product",
+        label: "产品",
         value: DiscountConditionType.PRODUCTS,
-        description: "Only for specific products",
+        description: "仅适用于特定产品",
         onClick: () =>
           layeredModalContext.push({
-            title: "Choose products",
+            title: "选择产品",
             onBack: () => layeredModalContext.pop(),
             view: isDetails ? (
               <DetailsProductConditionSelector onClose={onClose} />
@@ -48,12 +48,12 @@ const useConditionModalItems = ({
           }),
       },
       {
-        label: "Customer group",
+        label: "客户群",
         value: DiscountConditionType.CUSTOMER_GROUPS,
-        description: "Only for specific customer groups",
+        description: "仅针对特定客户群",
         onClick: () => {
           layeredModalContext.push({
-            title: "Choose groups",
+            title: "选择客户群",
             onBack: () => layeredModalContext.pop(),
             view: isDetails ? (
               <DetailsCustomerGroupConditionSelector onClose={onClose} />
@@ -64,12 +64,12 @@ const useConditionModalItems = ({
         },
       },
       {
-        label: "Tag",
+        label: "标签",
         value: DiscountConditionType.PRODUCT_TAGS,
-        description: "Only for specific tags",
+        description: "仅适用于特定标签",
         onClick: () =>
           layeredModalContext.push({
-            title: "Choose tags",
+            title: "选择标签",
             onBack: () => layeredModalContext.pop(),
             view: isDetails ? (
               <DetailsTagConditionSelector onClose={onClose} />
@@ -79,12 +79,12 @@ const useConditionModalItems = ({
           }),
       },
       {
-        label: "Collection",
+        label: "产品系列",
         value: DiscountConditionType.PRODUCT_COLLECTIONS,
-        description: "Only for specific product collections",
+        description: "仅适用于特定产品系列",
         onClick: () =>
           layeredModalContext.push({
-            title: "Choose collections",
+            title: "选择产品系列",
             onBack: () => layeredModalContext.pop(),
             view: isDetails ? (
               <DetailsCollectionConditionSelector onClose={onClose} />
@@ -94,12 +94,12 @@ const useConditionModalItems = ({
           }),
       },
       {
-        label: "Type",
+        label: "产品类型",
         value: DiscountConditionType.PRODUCT_TYPES,
-        description: "Only for specific product types",
+        description: "仅适用于特定产品类型",
         onClick: () =>
           layeredModalContext.push({
-            title: "Choose types",
+            title: "选择产品类型",
             onBack: () => layeredModalContext.pop(),
             view: isDetails ? (
               <DetailsTypeConditionSelector onClose={onClose} />

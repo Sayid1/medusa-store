@@ -49,10 +49,11 @@ const TextStep = React.forwardRef<HTMLDivElement, TextSteppProps>(
         <Textarea
           name="content"
           label="content"
+          className="text-xl"
           rows={2}
           onChange={onChange}
           value={props.content}
-          placeholder="ENTER TEXT HERE Please press Enter to create a new line"
+          placeholder="ENTER TEXT HERE"
         />
       </div>
     )

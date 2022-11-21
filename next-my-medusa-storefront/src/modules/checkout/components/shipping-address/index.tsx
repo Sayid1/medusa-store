@@ -12,14 +12,14 @@ const ShippingAddress = () => {
     <div>
       {customer && (customer.shipping_addresses?.length || 0) > 0 && (
         <div className="mb-6 flex flex-col gap-y-4 bg-amber-100 p-4">
-          <p className="text-small-regular">
+          <p className="text-lg">
             {`Hi ${customer.first_name}, do you want to use one of your saved addresses?`}
           </p>
           <AddressSelect addresses={customer.shipping_addresses} />
         </div>
       )}
       <ConnectForm<CheckoutFormValues>>
-        {({ register, formState: { errors, touchedFields } }) => (
+        {({ register, control, formState: { errors, touchedFields } }) => (
           <div className="grid grid-cols-1 gap-y-2">
             <Input
               label="Email"
@@ -28,6 +28,7 @@ const ShippingAddress = () => {
                 pattern: emailRegex,
               })}
               autoComplete="email"
+              required
               errors={errors}
               touched={touchedFields}
             />
@@ -38,6 +39,7 @@ const ShippingAddress = () => {
                   required: "First name is required",
                 })}
                 autoComplete="given-name"
+                required
                 errors={errors}
                 touched={touchedFields}
               />
@@ -46,6 +48,7 @@ const ShippingAddress = () => {
                 {...register("shipping_address.last_name", {
                   required: "Last name is required",
                 })}
+                required
                 autoComplete="family-name"
                 errors={errors}
                 touched={touchedFields}
@@ -63,13 +66,17 @@ const ShippingAddress = () => {
               {...register("shipping_address.address_1", {
                 required: "Address is required",
               })}
+              required
               autoComplete="address-line1"
               errors={errors}
               touched={touchedFields}
             />
             <Input
               label="Apartments, suite, etc."
-              {...register("shipping_address.address_2")}
+              {...register("shipping_address.address_2", {
+                required: "Apartments is required",
+              })}
+              required
               autoComplete="address-line2"
               errors={errors}
               touched={touchedFields}
@@ -80,6 +87,7 @@ const ShippingAddress = () => {
                 {...register("shipping_address.postal_code", {
                   required: "Postal code is required",
                 })}
+                required
                 autoComplete="postal-code"
                 errors={errors}
                 touched={touchedFields}
@@ -89,30 +97,43 @@ const ShippingAddress = () => {
                 {...register("shipping_address.city", {
                   required: "City is required",
                 })}
+                required
                 autoComplete="address-level2"
                 errors={errors}
                 touched={touchedFields}
               />
             </div>
+            {/* <CountrySelect
+              control={control}
+              autoComplete="country"
+            /> */}
+
             <CountrySelect
               {...register("shipping_address.country_code", {
                 required: "Country is required",
               })}
+              required
               autoComplete="country"
               errors={errors}
               touched={touchedFields}
             />
             <Input
               label="State / Province"
-              {...register("shipping_address.province")}
+              {...register("shipping_address.province", {
+                required: "State / Province is required",
+              })}
+              required
               autoComplete="address-level1"
               errors={errors}
               touched={touchedFields}
             />
             <Input
               label="Phone"
-              {...register("shipping_address.phone")}
+              {...register("shipping_address.phone", {
+                required: "Phone is required",
+              })}
               autoComplete="tel"
+              required
               errors={errors}
               touched={touchedFields}
             />

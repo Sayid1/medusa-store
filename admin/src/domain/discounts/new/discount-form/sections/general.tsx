@@ -61,10 +61,10 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
       {render && (
         <>
           <Controller
-            name="regions"
+            name="地区"
             control={control}
             rules={{
-              required: "Atleast one region is required",
+              required: "至少需要一个区域",
               validate: (value) =>
                 Array.isArray(value) ? value.length > 0 : !!value,
             }}
@@ -75,7 +75,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
                   onChange={(value) => {
                     onChange(type === "fixed" ? [value] : value)
                   }}
-                  label="Choose valid regions"
+                  label="选择有效地区"
                   isMultiSelect={type !== "fixed"}
                   hasSelectAll={type !== "fixed"}
                   enableSearch
@@ -87,12 +87,12 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
           />
           <div className="flex gap-x-base gap-y-base my-base">
             <InputField
-              label="Code"
+              label="折扣编码"
               className="flex-1"
-              placeholder="SUMMERSALE10"
+              placeholder="夏季特卖"
               required
               name="code"
-              ref={register({ required: "Code is required" })}
+              ref={register({ required: "请输入折扣编码" })}
             />
 
             {type !== "free_shipping" && (
@@ -109,7 +109,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
                         name="rule.value"
                         control={control}
                         rules={{
-                          required: "Amount is required",
+                          required: "请输入金额",
                           min: 1,
                         }}
                         render={({ value, onChange }) => {
@@ -128,7 +128,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
                 ) : (
                   <div className="flex-1">
                     <InputField
-                      label="Percentage"
+                      label="百分比"
                       min={0}
                       required
                       type="number"
@@ -148,15 +148,14 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
 
           <div className="text-grey-50 inter-small-regular flex flex-col mb-6">
             <span>
-              The code your customers will enter during checkout. This will
-              appear on your customer’s invoice.
+              您的客户将在结账时输入的编码。 这将出现在您客户的发票上。
             </span>
-            <span>Uppercase letters and numbers only.</span>
+            <span>仅限大写字母和数字。</span>
           </div>
           <Textarea
-            label="Description"
+            label="描述"
             required
-            placeholder="Summer Sale 2022"
+            placeholder="2022 年夏季特卖"
             rows={1}
             name="rule.description"
             ref={register({
@@ -170,7 +169,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
               render={({ onChange, value }) => {
                 return (
                   <Checkbox
-                    label="This is a template discount"
+                    label="这是模板折扣"
                     name="is_dynamic"
                     id="is_dynamic"
                     checked={value}
@@ -181,7 +180,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
             />
             <IconTooltip
               content={
-                "Template discounts allow you to define a set of rules that can be used across a group of discounts. This is useful in campaigns that should generate unique codes for each user, but where the rules for all unique codes should be the same."
+                "模板折扣允许您定义一组可用于一组折扣的规则。 这在应该为每个用户生成唯一代码，但所有唯一代码的规则应该相同的活动中很有用。"
               }
             />
           </div>

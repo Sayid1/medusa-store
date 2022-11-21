@@ -34,7 +34,7 @@ const Container = ({ children }: ContainerProps) => {
         >
           <div className="absolute inset-0 overflow-hidden trans">
             <div className="pointer-events-none fixed inset-y-0 right-left flex max-w-full">
-              <div className="relative w-screen pointer-events-auto bg-white text-gray-900 flex flex-col overflow-y-auto">
+              <div className="relative w-screen pointer-events-auto bg-gradient-radial from-[#e61a5e] to-[#5e1ae6] to-[#FEEE10] text-gray-900 flex flex-col overflow-y-auto">
                 {children}
               </div>
             </div>

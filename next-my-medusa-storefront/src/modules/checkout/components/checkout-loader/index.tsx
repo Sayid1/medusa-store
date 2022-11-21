@@ -18,7 +18,7 @@ const CheckoutLoader = () => {
           leaveTo="opacity-0"
         >
           <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center">
-            <Spinner size={24} />
+            <Spinner size={48} />
           </div>
         </Transition.Child>
       </Dialog>

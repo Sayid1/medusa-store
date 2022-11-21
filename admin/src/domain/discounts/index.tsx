@@ -15,7 +15,7 @@ const DiscountIndex: React.FC<RouteComponentProps> = () => {
 
   const actionables = [
     {
-      label: "Add Discount",
+      label: "添加折扣",
       onClick: () => setIsOpen(true),
       icon: <PlusIcon size={20} />,
     },

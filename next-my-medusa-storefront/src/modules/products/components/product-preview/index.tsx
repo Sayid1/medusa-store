@@ -8,15 +8,35 @@ const ProductPreview = ({
   handle,
   thumbnail,
   price,
-}: ProductPreviewType) => {
+  header = false,
+}: ProductPreviewType & { header?: Boolean }) => {
   return (
     <Link href={`/products/${handle}`}>
       <a>
-        <div>
+        <div
+          className={clsx(
+            "group shadow-md rounded-md overflow-hidden hover:scale-105 transition-all"
+          )}
+        >
           <Thumbnail thumbnail={thumbnail} size="full" />
-          <div className="text-base-regular mt-2">
-            <span>{title}</span>
-            <div className="flex items-center gap-x-2 mt-1">
+          <div className="text-xl mt-2 px-2 pb-2">
+            <div
+              className={clsx(
+                "trutext-ellipsis overflow-hidden h-12 relative transition-all",
+                {
+                  "group-hover:text-[#9C1AA8]": !header,
+                  "group-hover:text-[#FEEE10]": header,
+                }
+              )}
+            >
+              {title}
+            </div>
+            <div
+              className={clsx("flex items-center gap-x-2 mt-1 transition-all", {
+                "group-hover:text-[#9C1AA8]": !header,
+                "group-hover:text-[#FEEE10]": header,
+              })}
+            >
               {price ? (
                 <>
                   {price.price_type === "sale" && (

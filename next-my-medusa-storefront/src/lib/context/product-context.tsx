@@ -23,7 +23,7 @@ interface ProductContext {
   updateOptions: (options: Record<string, string>) => void
   increaseQuantity: () => void
   decreaseQuantity: () => void
-  addToCart: () => void
+  addToCart: (metadata: Record<string, string>) => void
 }
 
 const ProductActionContext = createContext<ProductContext | null>(null)
@@ -45,12 +45,12 @@ export const ProductProvider = ({
   const { addItem } = useStore()
   const { cart } = useCart()
   const { variants } = product
-
+  // console.log("product", product)
   useEffect(() => {
     // initialize the option state
     const optionObj: Record<string, string> = {}
     for (const option of product.options) {
-      Object.assign(optionObj, { [option.id]: undefined })
+      Object.assign(optionObj, { [option.id]: option.values[0].value })
     }
     setOptions(optionObj)
   }, [product])
@@ -68,7 +68,6 @@ export const ProductProvider = ({
 
       map[variant.id] = tmp
     }
-
     return map
   }, [variants])
 
@@ -81,7 +80,10 @@ export const ProductProvider = ({
         variantId = key
       }
     }
-
+    // console.log("variants", variants)
+    // console.log("variantRecord", variantRecord)
+    // console.log("options", options)
+    // console.log("variantId", variantId)
     return variants.find((v) => v.id === variantId)
   }, [options, variantRecord, variants])
 
@@ -118,11 +120,12 @@ export const ProductProvider = ({
     setOptions({ ...options, ...update })
   }
 
-  const addToCart = () => {
+  const addToCart = (metadata: Record<string, string>) => {
     if (variant) {
       addItem({
         variantId: variant.id,
         quantity,
+        metadata,
       })
     }
   }

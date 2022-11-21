@@ -41,6 +41,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
 
   const { refetchCustomer } = useAccount()
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -107,15 +108,13 @@ const EditAddress: React.FC<EditAddressProps> = ({
         )}
       >
         <div className="flex flex-col">
-          <span className="text-left text-base-semi">
+          <span className="text-left text-xl">
             {address.first_name} {address.last_name}
           </span>
           {address.company && (
-            <span className="text-small-regular text-gray-700">
-              {address.company}
-            </span>
+            <span className="text-lg text-gray-700">{address.company}</span>
           )}
-          <div className="flex flex-col text-left text-base-regular mt-2">
+          <div className="flex flex-col text-left text-xl mt-2">
             <span>
               {address.address_1}
               {address.address_2 && <span>, {address.address_2}</span>}
@@ -131,14 +130,14 @@ const EditAddress: React.FC<EditAddressProps> = ({
         </div>
         <div className="flex items-center gap-x-4">
           <button
-            className="text-small-regular text-gray-700 flex items-center gap-x-2"
+            className="text-lg text-gray-700 flex items-center gap-x-2"
             onClick={open}
           >
             <Edit size={16} />
             Edit
           </button>
           <button
-            className="text-small-regular text-gray-700 flex items-center gap-x-2"
+            className="text-lg text-gray-700 flex items-center gap-x-2"
             onClick={removeAddress}
           >
             <Trash />
@@ -214,8 +213,10 @@ const EditAddress: React.FC<EditAddressProps> = ({
               autoComplete="address-level1"
             />
             <CountrySelect
-              {...register("country_code", { required: true })}
-              autoComplete="country"
+              control={control}
+              name="country_code"
+              // {...register("country_code", { required: true })}
+              // autoComplete="country"
             />
             <Input
               label="Phone"
@@ -229,7 +230,11 @@ const EditAddress: React.FC<EditAddressProps> = ({
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={close}>
+          <Button
+            variant="secondary"
+            onClick={close}
+            className="!bg-gray-200 !text-gray-900 !border-gray-200 min-h-0"
+          >
             Cancel
           </Button>
           <Button onClick={submit} disabled={submitting}>

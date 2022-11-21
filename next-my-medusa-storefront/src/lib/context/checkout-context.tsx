@@ -39,6 +39,7 @@ export type CheckoutFormValues = {
   shipping_address: AddressValues
   billing_address: AddressValues
   email: string
+  soId: string
 }
 
 interface CheckoutContext {
@@ -99,7 +100,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
   const { regions } = useRegions()
 
   const { resetCart, setRegion } = useStore()
-  const { push } = useRouter()
+  const { replace } = useRouter()
 
   const editAddresses = useToggleState()
   const sameAsBilling = useToggleState(
@@ -314,8 +315,9 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
   const onPaymentCompleted = () => {
     complete(undefined, {
       onSuccess: ({ data }) => {
-        resetCart()
-        push(`/order/confirmed/${data.id}`)
+        replace(`/order/confirmed/${data.id}`).then(() => {
+          resetCart()
+        })
       },
     })
   }
@@ -444,5 +446,6 @@ const mapFormValues = (
         cart?.billing_address?.phone || customerBillingAddress?.phone || "",
     },
     email: cart?.email || customer?.email || "",
+    soId: cart?.shipping_methods?.[0]?.shipping_option_id || "",
   }
 }

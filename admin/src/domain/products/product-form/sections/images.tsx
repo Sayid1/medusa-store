@@ -89,7 +89,7 @@ const Images = () => {
       </div>
       <div className="mt-2xlarge">
         <FileUploadField
-          onFileChosen={(files) => {
+          onFileChosen={(files: any[]) => {
             const imgs = Array.from(files).map((file) => ({
               url: URL.createObjectURL(file),
               name: file.name,

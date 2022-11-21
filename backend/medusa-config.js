@@ -27,7 +27,10 @@ const ADMIN_CORS =
     'http://localhost:7000,http://localhost:7001,http://localhost:8000'
 
 // CORS to avoid issues when consuming Medusa from a client
-const STORE_CORS = process.env.STORE_CORS || 'http://localhost:8000'
+const STORE_CORS =
+    process.env.STORE_CORS ||
+    'http://localhost:8000' ||
+    'https://medusa.mynatapp.cc'
 
 // Database URL (here we use a local database called medusa-development)
 const DATABASE_URL = process.env.DATABASE_URL
@@ -41,7 +44,7 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || ''
 
 // This is the place to include plugins. See API documentation for a thorough guide on plugins.
 const plugins = [
-    // `medusa-fulfillment-manual`,
+    `medusa-fulfillment-manual`,
     // `medusa-payment-manual`,
     // {
     //     resolve: `medusa-file-minio`,
@@ -60,6 +63,40 @@ const plugins = [
     //     api_key: STRIPE_API_KEY,
     //     webhook_secret: STRIPE_WEBHOOK_SECRET,
     //   },
+    // },
+    {
+        resolve: `medusa-payment-paypal`,
+        options: {
+            sandbox: process.env.PAYPAL_SANDBOX,
+            client_id: process.env.PAYPAL_CLIENT_ID,
+            client_secret: process.env.PAYPAL_CLIENT_SECRET,
+            auth_webhook_id: process.env.PAYPAL_AUTH_WEBHOOK_ID,
+        },
+    },
+    // {
+    //     resolve: `medusa-plugin-algolia`,
+    //     options: {
+    //         application_id: process.env.ALGOLIA_APP_ID,
+    //         admin_api_key: process.env.ALGOLIA_ADMIN_API_KEY,
+    //         settings: {
+    //             products: {
+    //                 searchableAttributes: ['title', 'description'],
+    //                 attributesToRetrieve: [
+    //                     'id',
+    //                     'title',
+    //                     'description',
+    //                     'handle',
+    //                     'thumbnail',
+    //                     'variants',
+    //                     'variant_sku',
+    //                     'options',
+    //                     'collection_title',
+    //                     'collection_handle',
+    //                     'images',
+    //                 ],
+    //             },
+    //         },
+    //     },
     // },
 ]
 

@@ -87,7 +87,7 @@ const DiscountForm: React.FC<DiscountFormProps> = ({
               variant="ghost"
               className="border rounded-rounded"
             >
-              Save as draft
+              保存为草稿
             </Button>
             <Button
               size="small"
@@ -95,7 +95,7 @@ const DiscountForm: React.FC<DiscountFormProps> = ({
               onClick={handleSubmit(submitCTA)}
               className="rounded-rounded"
             >
-              {isEdit ? "Save changes" : "Publish discount"}
+              {isEdit ? "保存修改" : "发布折扣"}
             </Button>
           </div>
         </div>
@@ -104,7 +104,7 @@ const DiscountForm: React.FC<DiscountFormProps> = ({
         <div className="flex justify-center mb-[25%]">
           <div className="medium:w-7/12 large:w-6/12 small:w-4/5 w-full pt-16">
             <h1 className="inter-xlarge-semibold">
-              {isEdit ? "Edit discount" : "Create new discount"}
+              {isEdit ? "修改折扣" : "新建折扣"}
             </h1>
             <Accordion
               className="pt-7 text-grey-90"
@@ -113,15 +113,15 @@ const DiscountForm: React.FC<DiscountFormProps> = ({
             >
               <Accordion.Item
                 forceMountContent
-                title="Discount type"
+                title="折扣类型"
                 required
-                tooltip="Select a discount type"
+                tooltip="选择一个折扣类型"
                 value="promotion-type"
               >
                 <PromotionType />
               </Accordion.Item>
               <Accordion.Item
-                title="General"
+                title="通用"
                 required
                 value="general"
                 forceMountContent
@@ -130,16 +130,16 @@ const DiscountForm: React.FC<DiscountFormProps> = ({
               </Accordion.Item>
               <Accordion.Item
                 forceMountContent
-                title="Configuration"
+                title="配置"
                 value="configuration"
-                description="Discount code applies from you hit the publish button and forever if left untouched."
+                description="折扣代码适用于您点击发布按钮，如果不设置则永久生效。                "
               >
                 <Configuration promotion={discount} isEdit={isEdit} />
               </Accordion.Item>
               <Accordion.Item
                 forceMountContent
-                title="Conditions"
-                description="Discount code apply to all products if left untouched."
+                title="条件"
+                description="如果不设置，此折扣将适用于所有产品。"
                 value="conditions"
                 tooltip="Add conditions to your Discount"
               >

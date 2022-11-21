@@ -20,7 +20,7 @@
 
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-xsmall-regular;
+    @apply -translate-y-2 text-base;
   }
 
   input:focus ~ label {
@@ -36,8 +36,8 @@
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    border: 1px solid #212121;
-    -webkit-text-fill-color: #212121;
+    /* border: 1px solid #212121;
+    -webkit-text-fill-color: #212121; */
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
   }
@@ -114,24 +114,35 @@
     @apply text-[36px] leading-[48px] font-semibold;
   }
 }
+/* @import url('https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap') */
+/* @import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap'); */
 
-body {
+/* body {
     user-select: none;
-}
+} */
 
 :root {
-  --default-pl: max(25px, calc((100% - 1145px) / 2 + 25px));
+  --default-pl: max(25px, calc((100% - 1280px) / 2 + 25px));
   --rg: radial-gradient(circle 800px at 700px 200px, hsl(276 100% 99.0%), #FDFCFD00), radial-gradient(circle 600px at calc(100% - 300px) 300px, hsl(165 68.8% 89.5%), #FDFCFD00), radial-gradient(circle 800px at right center, hsl(193 99.0% 94.7%), #FDFCFD00), radial-gradient(circle 800px at right bottom, hsl(193 100% 98.8%), #FDFCFD00), radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), hsl(323 86.3% 96.5%), hsl(322 100% 99.4%), #FDFCFD00);
   --dark-rg: radial-gradient(circle 800px at 700px 200px, hsl(283 30.0% 11.8%), #16161800), radial-gradient(circle 600px at calc(100% - 300px) 300px, hsl(174 84.8% 10.3%), #16161800), radial-gradient(circle 800px at right center, hsl(201 74.6% 12.2%), #16161800), radial-gradient(circle 800px at right bottom, hsl(205 45.0% 8.6%), #16161800), radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), hsl(319 41.0% 16.0%), hsl(318 25.0% 9.6%), #16161800);
-  --max-width: 1145px;
+  --max-width: 1280px;
   --primary-bg: rgb(248, 249, 250);
   --secondary-color: hsl(206 24.0% 9.0%); /* hsl(210 6.0% 93.0%); */
   --tertiary-color: hsl(206 6.0% 63.0%);
 
-  --fourth-color: rgb(236, 0, 140);
+  --fourth-color: #fff143; /* rgb(236, 0, 140); */
   --fourth-hover-color: rgb(236, 0, 140, .5);
 
-  --secondary-bg-color: #e6e6e6;
+  --secondary-bg-color: rgba(247,104,71,.2); /*#e6e6e6;*/
+}
+
+.font-DIN {
+    font-family: DIN-alternate-bold;
+}
+
+@font-face {
+    font-family: DIN-alternate-bold;
+    src: url("/fonts/DINAlternateBold.ttf")
 }
 
 @font-face {

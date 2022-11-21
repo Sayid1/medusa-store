@@ -3,6 +3,7 @@ import config from '../medusa-config'
 import { Medusa } from 'medusa-extender'
 import { resolve } from 'path'
 import { ProductModule } from './modules/product/product.module'
+import { ArtworkModule } from './modules/artwork/artwork.module'
 import { ProductCollectionModule } from './modules/product-collection/product-collection.module'
 import { ProductCollectionRelationModule } from './modules/product-collection-relation/product-collection-relation.module'
 
@@ -11,6 +12,7 @@ async function bootstrap() {
 
     await new Medusa(resolve(__dirname, '..'), expressInstance).load([
         // ProductModule,
+        ArtworkModule,
         ProductCollectionModule,
         ProductCollectionRelationModule,
     ])

@@ -97,7 +97,7 @@ export const usePromotionTableColumns = () => {
         ),
       },
       {
-        Header: "Description",
+        Header: "描述",
         accessor: "rule.description",
         Cell: ({ cell: { value }, index }) => (
           <Table.Cell key={index}>{value}</Table.Cell>
@@ -105,7 +105,7 @@ export const usePromotionTableColumns = () => {
       },
       {
         Header: <div className="text-right">Amount</div>,
-        id: "amount",
+        id: "金额",
         Cell: ({ row: { original }, index }) => {
           return (
             <Table.Cell className="text-right" key={index}>
@@ -116,7 +116,7 @@ export const usePromotionTableColumns = () => {
       },
       {
         Header: <div className="w-[60px]" />,
-        id: "currency",
+        id: "货币",
         Cell: ({ row: { original }, index }) => (
           <Table.Cell className="px-2 text-grey-40" key={index}>
             {getCurrencySymbol(original)}
@@ -124,14 +124,14 @@ export const usePromotionTableColumns = () => {
         ),
       },
       {
-        Header: "Status",
+        Header: "状态",
         accessor: "ends_at",
         Cell: ({ row: { original }, index }) => (
           <Table.Cell key={index}>{getPromotionStatusDot(original)}</Table.Cell>
         ),
       },
       {
-        Header: () => <div className="text-right">Redemptions</div>,
+        Header: () => <div className="text-right">兑换次数</div>,
         accessor: "usage_count",
         Cell: ({ row: { original }, index }) => {
           return (

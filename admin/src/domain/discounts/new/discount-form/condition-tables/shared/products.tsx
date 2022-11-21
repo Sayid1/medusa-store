@@ -59,7 +59,7 @@ export const useProductColumns = () => {
       {
         Header: () => (
           <div className="flex items-center gap-1 min-w-[443px]">
-            Title <SortingIcon size={16} />
+            标题 <SortingIcon size={16} />
           </div>
         ),
         accessor: "title",
@@ -88,7 +88,7 @@ export const useProductColumns = () => {
       {
         Header: () => (
           <div className="flex items-center gap-1">
-            Status <SortingIcon size={16} />
+            状态 <SortingIcon size={16} />
           </div>
         ),
         accessor: "status",
@@ -104,7 +104,7 @@ export const useProductColumns = () => {
       {
         Header: () => (
           <div className="flex justify-end items-center gap-1">
-            Variants <SortingIcon size={16} />
+            变体 <SortingIcon size={16} />
           </div>
         ),
         id: "variants",

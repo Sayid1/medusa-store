@@ -4,10 +4,10 @@ import MedusaCTA from "@modules/layout/components/medusa-cta"
 
 const Footer = () => {
   return (
-    <footer className="relative">
-      <FooterCTA />
+    <footer className="relative bg-gradient-radial from-[#e61a5e] to-[#5e1ae6] text-white">
+      {/* <FooterCTA /> */}
       <FooterNav />
-      <MedusaCTA />
+      {/* <MedusaCTA /> */}
     </footer>
   )
 }

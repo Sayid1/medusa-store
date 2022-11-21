@@ -108,13 +108,15 @@ const Data = () => {
         <div>
           <span className="font-medium text-6xl block text-[color:var(--secondary-color)] mb-2.5">
             <span style={{ verticalAlign: "inherit" }}>
-              <span style={{ verticalAlign: "inherit" }}>5M+</span>
+              <span style={{ verticalAlign: "inherit" }} className="font-DIN">
+                6000m²+
+              </span>
             </span>
           </span>
           <span className="font-norma text-base block text-[color:var(--tertiary-color)]">
             <span style={{ verticalAlign: "inherit" }}>
-              <span style={{ verticalAlign: "inherit" }}>
-                Monthly downloads
+              <span style={{ verticalAlign: "inherit" }} className="text-2xl">
+                Floorspace
               </span>
             </span>
           </span>
@@ -123,12 +125,16 @@ const Data = () => {
         <div>
           <span className="font-medium text-6xl block text-[color:var(--secondary-color)] mb-2.5">
             <span style={{ verticalAlign: "inherit" }}>
-              <span style={{ verticalAlign: "inherit" }}>3000+</span>
+              <span style={{ verticalAlign: "inherit" }} className="font-DIN">
+                200+
+              </span>
             </span>
           </span>
           <span className="font-norma text-base block text-[color:var(--tertiary-color)]">
             <span style={{ verticalAlign: "inherit" }}>
-              <span style={{ verticalAlign: "inherit" }}>Discord members</span>
+              <span style={{ verticalAlign: "inherit" }} className="text-2xl">
+                Staff
+              </span>
             </span>
           </span>
         </div>
@@ -136,16 +142,15 @@ const Data = () => {
         <div>
           <span className="font-medium text-6xl block text-[color:var(--secondary-color)] mb-2.5">
             <span style={{ verticalAlign: "inherit" }}>
-              <span style={{ verticalAlign: "inherit" }}>5K+</span>
+              <span style={{ verticalAlign: "inherit" }} className="font-DIN">
+                $10M+
+              </span>
             </span>
           </span>
           <span className="font-norma text-base block text-[color:var(--tertiary-color)]">
             <span style={{ verticalAlign: "inherit" }}>
-              <span
-                style={{ verticalAlign: "inherit" }}
-                className="font-normal"
-              >
-                GitHub stars
+              <span style={{ verticalAlign: "inherit" }} className="text-2xl">
+                Online revenue
               </span>
             </span>
           </span>

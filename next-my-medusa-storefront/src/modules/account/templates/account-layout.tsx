@@ -3,6 +3,7 @@ import UnderlineLink from "@modules/common/components/underline-link"
 import Spinner from "@modules/common/icons/spinner"
 import React, { useEffect } from "react"
 import AccountNav from "../components/account-nav"
+import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid"
 
 const AccountLayout: React.FC = ({ children }) => {
   const { customer, retrievingCustomer, checkSession } = useAccount()
@@ -31,15 +32,19 @@ const AccountLayout: React.FC = ({ children }) => {
         <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 px-8 py-12 gap-x-8">
           <div>
             <h3 className="text-xl-semi mb-4">Got questions?</h3>
-            <span className="text-small-regular">
+            <span className="text-small">
               You can find frequently asked questions and answers on our
               customer service page.
             </span>
           </div>
-          <div>
-            <UnderlineLink href="/customer-service">
-              Customer Service
-            </UnderlineLink>
+          <div
+            className="flex items-center cursor-pointer transition-all duration-300 group hover:pl-4 hover:pr-1"
+            onClick={() => window.Tawk_API.maximize()}
+          >
+            {/* <UnderlineLink href="/customer-service"> */}
+            Customer Service{" "}
+            <ChatBubbleLeftEllipsisIcon className="w-5 h-5 ml-1" />
+            {/* </UnderlineLink> */}
           </div>
         </div>
       </div>

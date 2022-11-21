@@ -79,8 +79,8 @@ const Settings: React.FC<SettingsProps> = ({ promotion, isEdit = false }) => {
               forceMountContent
               className="border-b-0"
               title="Start date"
-              subtitle="Schedule the discount to activate in the future."
-              tooltip="If you want to schedule the discount to activate in the future, you can set a start date here, otherwise the discount will be active immediately."
+              subtitle="设置折扣以在将来激活。"
+              tooltip="如果您想设置折扣在未来激活，您可以在此处设置开始日期，否则折扣将立即生效。"
               value="starts_at"
               customTrigger={
                 <Switch checked={openItems.indexOf("starts_at") > -1} />
@@ -104,11 +104,11 @@ const Settings: React.FC<SettingsProps> = ({ promotion, isEdit = false }) => {
                       <>
                         <DatePicker
                           date={date}
-                          label="Start date"
+                          label="开始日期"
                           onSubmitDate={onChange}
                         />
                         <TimePicker
-                          label="Start time"
+                          label="开始时间"
                           date={date}
                           onSubmitDate={onChange}
                         />
@@ -122,9 +122,9 @@ const Settings: React.FC<SettingsProps> = ({ promotion, isEdit = false }) => {
               headingSize="medium"
               forceMountContent
               className="border-b-0"
-              title="Discount has an expiry date?"
-              subtitle="Schedule the discount to deactivate in the future."
-              tooltip="If you want to schedule the discount to deactivate in the future, you can set an expiry date here."
+              title="折扣有有效期吗？"
+              subtitle="设置折扣以在将来停用。"
+              tooltip="如果您想设置折扣在未来停用，您可以在此处设置到期日期。"
               value="ends_at"
               customTrigger={
                 <Switch checked={openItems.indexOf("ends_at") > -1} />
@@ -150,11 +150,11 @@ const Settings: React.FC<SettingsProps> = ({ promotion, isEdit = false }) => {
                       <>
                         <DatePicker
                           date={date}
-                          label="Expiry date"
+                          label="过期日期"
                           onSubmitDate={onChange}
                         />
                         <TimePicker
-                          label="Expiry time"
+                          label="过期时间"
                           date={date}
                           onSubmitDate={onChange}
                         />
@@ -168,9 +168,9 @@ const Settings: React.FC<SettingsProps> = ({ promotion, isEdit = false }) => {
               headingSize="medium"
               forceMountContent
               className="border-b-0"
-              title="Limit the number of redemptions?"
-              subtitle="Limit applies across all customers, not per customer."
-              tooltip="If you wish to limit the amount of times a customer can redeem this discount, you can set a limit here."
+              title="限制兑换次数？"
+              subtitle="限制适用于所有客户，而不是每个客户。"
+              tooltip="如果您希望限制客户可以兑换此折扣的次数，您可以在此处设置限制。"
               value="usage_limit"
               customTrigger={
                 <Switch checked={openItems.indexOf("usage_limit") > -1} />
@@ -184,7 +184,7 @@ const Settings: React.FC<SettingsProps> = ({ promotion, isEdit = false }) => {
                 <InputField
                   name="usage_limit"
                   ref={register({ valueAsNumber: true })}
-                  label="Number of redemptions"
+                  label="兑换次数"
                   type="number"
                   placeholder="5"
                   min={1}
@@ -197,10 +197,10 @@ const Settings: React.FC<SettingsProps> = ({ promotion, isEdit = false }) => {
                 disabled={!isDynamic}
                 headingSize="medium"
                 forceMountContent
-                title="Availability duration?"
+                title="可用性持续时间？"
                 className="border-b-0"
-                subtitle="Set the duration of the discount."
-                tooltip="Select a discount type"
+                subtitle="设置折扣的持续时间。"
+                tooltip="选择折扣类型"
                 value="valid_duration"
                 customTrigger={
                   <Switch checked={openItems.indexOf("valid_duration") > -1} />

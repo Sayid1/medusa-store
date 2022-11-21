@@ -10,17 +10,30 @@ type InputProps = Omit<
   "placeholder"
 > & {
   label: string
+  immersive?: boolean
   errors?: Record<string, unknown>
   touched?: Record<string, unknown>
   name: string
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ type, name, label, errors, touched, required, ...props }, ref) => {
+  (
+    {
+      type,
+      name,
+      label,
+      errors,
+      touched,
+      required,
+      immersive = true,
+      ...props
+    },
+    ref
+  ) => {
     const inputRef = React.useRef<HTMLInputElement>(null)
     const [showPassword, setShowPassword] = useState(false)
     const [inputType, setInputType] = useState(type)
-
+    console.log("required", required)
     useEffect(() => {
       if (type === "password" && showPassword) {
         setInputType("text")
@@ -37,33 +50,48 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div>
-        <div className="relative z-0 w-full text-base-regular">
+        <div className="relative z-0 w-full text-xl">
+          {!immersive && (
+            <label
+              htmlFor={name}
+              onClick={() => inputRef.current?.focus()}
+              className={clsx("origin-0 text-[#9C1AA8]", {
+                "!text-[red]": hasError,
+              })}
+            >
+              {label} {required && <span className="text-rose-500">*</span>}
+            </label>
+          )}
           <input
             type={inputType}
             name={name}
             placeholder=" "
             className={clsx(
-              "pt-4 pb-1 block w-full px-4 mt-0 bg-transparent border appearance-none focus:outline-none focus:ring-0 focus:border-gray-400 border-gray-200",
+              // "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
+              "block rounded-md outline-[#9C1AA8] w-full bg-transparent border border appearance-none outline-[#9C1AA8]",
               {
-                "border-rose-500 focus:border-rose-500": hasError,
+                "mt-1 p-[0.5rem_0.75rem]": !immersive,
+                "px-4 mt-0 pt-4 pb-1": immersive,
+                "border-[red] focus:border-rose-500": hasError,
               }
             )}
             {...props}
             ref={inputRef}
           />
-          <label
-            htmlFor={name}
-            onClick={() => inputRef.current?.focus()}
-            className={clsx(
-              "mx-3 px-1 transition-all absolute duration-300 top-3 -z-1 origin-0 text-gray-500",
-              {
-                "!text-rose-500": hasError,
-              }
-            )}
-          >
-            {label}
-            {required && <span className="text-rose-500">*</span>}
-          </label>
+          {immersive && (
+            <label
+              htmlFor={name}
+              onClick={() => inputRef.current?.focus()}
+              className={clsx(
+                "mx-3 px-1 transition-all absolute duration-300 top-3 -z-1 origin-0 text-gray-500",
+                {
+                  "!text-[red]": hasError,
+                }
+              )}
+            >
+              {label} {required && <span className="text-rose-500">*</span>}
+            </label>
+          )}
           {type === "password" && (
             <button
               type="button"
@@ -80,7 +108,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             name={name}
             render={({ message }) => {
               return (
-                <div className="pt-1 pl-2 text-rose-500 text-xsmall-regular">
+                <div className="pt-1 pl-2 text-[red] text-lg">
                   <span>{message}</span>
                 </div>
               )

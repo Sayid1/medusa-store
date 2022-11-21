@@ -5,16 +5,14 @@ const SignInPrompt = () => {
   return (
     <div className="bg-white flex items-start justify-between">
       <div>
-        <h2 className="text-xl-semi">Already have an account?</h2>
-        <p className="text-base-regular text-gray-700 mt-2">
+        <h2 className="text-2xl">Already have an account?</h2>
+        <p className="text-xl text-gray-700 mt-2">
           Sign in for a better experience.
         </p>
       </div>
       <div>
         <Link href="/account/login">
-          <a>
-            <Button variant="secondary">Sign in</Button>
-          </a>
+          <a className="hover:underline text-2xl">Sign in</a>
         </Link>
       </div>
     </div>

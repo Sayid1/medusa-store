@@ -11,10 +11,16 @@ class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href={`//${hostname}`} crossOrigin="true" />
           <link rel="dns-prefetch" href={`//${hostname}`} />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-            rel="stylesheet"
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="true"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Markazi+Text&family=Noto+Serif&display=swap"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body>
           <Main />

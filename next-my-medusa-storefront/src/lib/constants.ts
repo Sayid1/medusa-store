@@ -145,7 +145,7 @@ export type ColourType = typeof COLOURS[0]
 
 export const COLOURS = [
   {
-    color: "WARM WHITE",
+    color: "Warm White",
     bulbColor: "rgb(248, 224, 142)",
     bulbTextShadow:
       "rgb(255 255 255) 0px 0px 1px, rgb(255 255 255) 0px 0px 2px, rgb(248 224 142) 0px 0px 4px, rgb(248 224 142) 0px 0px 6px, rgb(248 224 142) 0px 0px 8px, rgb(248 224 142) 0px 0px 11px, rgb(248 224 142) 0px 0px 15px",
@@ -153,7 +153,7 @@ export const COLOURS = [
       "rgb(255 255 255) 0px 0px 5px, rgb(255 255 255) 0px 0px 10px, rgb(248 224 142) 0px 0px 20px, rgb(248 224 142) 0px 0px 30px, rgb(248 224 142) 0px 0px 40px, rgb(248 224 142) 0px 0px 55px, rgb(248 224 142) 0px 0px 75px",
   },
   {
-    color: "WHITE",
+    color: "White",
     bulbColor: "rgb(229, 229, 229)",
     bulbTextShadow:
       "rgb(255 255 255) 0px 0px 1px, rgb(255 255 255) 0px 0px 2px, rgb(229 229 229) 0px 0px 4px, rgb(229 229 229) 0px 0px 6px, rgb(229 229 229) 0px 0px 8px, rgb(229 229 229) 0px 0px 11px, rgb(229 229 229) 0px 0px 15px",
