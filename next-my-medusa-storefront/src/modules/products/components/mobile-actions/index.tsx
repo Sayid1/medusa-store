@@ -16,8 +16,7 @@ type MobileActionsProps = {
 }
 
 const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
-  const { variant, addToCart, options, inStock, updateOptions } =
-    useProductActions()
+  const { variant, options, inStock, updateOptions } = useProductActions()
   const { state, open, close } = useToggleState()
 
   const price = useProductPrice({ id: product.id, variantId: variant?.id })
@@ -31,7 +30,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
   return (
     <>
       <div
-        className={clsx("lg:hidden sticky inset-x-0 bottom-0", {
+        className={clsx("lg:hidden fixed inset-x-0 bottom-0 z-[2000000001]", {
           "pointer-events-none": !show,
         })}
       >
@@ -50,7 +49,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
               <span>{product.title}</span>
               <span>—</span>
               {selectedPrice ? (
-                <div className="flex items-end gap-x-2 text-gray-700">
+                <div className="flex items-end gap-x-2 text-gray-700 font-DIN">
                   {selectedPrice.price_type === "sale" && (
                     <p>
                       <span className="line-through text-small-regular">
@@ -72,8 +71,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
             </div>
             <div className="grid grid-cols-2 w-full gap-x-4">
               <Button onClick={open} variant="secondary">
-                <div className="flex items-center justify-between w-full">
-                  <span>
+                <div className="flex items-center justify-end w-full">
+                  <span className="mr-4">
                     {variant
                       ? Object.values(options).join(" / ")
                       : "Select Options"}
@@ -81,7 +80,10 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
                   <ChevronDown />
                 </div>
               </Button>
-              <Button onClick={() => addToCart()}>
+              <Button
+                type="submit"
+                className="bg-gradient-radial from-[#e61a5e] to-[#5e1ae6]"
+              >
                 {!inStock ? "Out of stock" : "Add to cart"}
               </Button>
             </div>
@@ -89,7 +91,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
         </Transition>
       </div>
       <Transition appear show={state} as={Fragment}>
-        <Dialog as="div" className="relative z-[75]" onClose={close}>
+        <Dialog as="div" className="relative z-[2000000002]" onClose={close}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

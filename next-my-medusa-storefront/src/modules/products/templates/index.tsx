@@ -7,6 +7,23 @@ import React, { useRef } from "react"
 import Breadcrumb from "@modules/common/components/breadcrumb"
 import ImageGallery from "../components/image-gallary"
 import MobileActions from "../components/mobile-actions"
+import { useForm, FormProvider, Controller } from "react-hook-form"
+import { useProductActions } from "@lib/context/product-context"
+import {
+  COLOURS,
+  PLUGS,
+  BACKBOARD_COLORS,
+  SIZES,
+  USEAGE,
+  BACKBOARD_STYLES,
+} from "@lib/constants"
+import ProductForm from "./product-form"
+
+const plugOptions = PLUGS.map((plug) => ({ id: plug, name: plug }))
+const boardOptions = BACKBOARD_COLORS.map((board) => ({
+  id: board,
+  name: board,
+}))
 
 type ProductTemplateProps = {
   product: Product
@@ -18,37 +35,31 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
   const inView = useIntersection(info, "0px")
 
   const { title: collectionTitle, handle } = product.collection
-  const { title: productTitle } = product
+  // const { addToCart } = useProductActions()
+
+  const formMethods = useForm({
+    defaultValues: {
+      colour: COLOURS[0],
+      boardColor: boardOptions[0],
+      plug: plugOptions[0],
+      useage: USEAGE[0],
+      size: SIZES[0].size,
+      boardStyle: BACKBOARD_STYLES[0].name,
+      // usage: usageOptions[0],
+    },
+  })
+
+  const { handleSubmit, control, watch } = formMethods
 
   return (
     <ProductProvider product={product}>
       <div className="content-container">
         <Breadcrumb
           className="mt-6"
-          items={[
-            { name: collectionTitle, url: "/collections/" + handle },
-            { name: productTitle },
-          ]}
+          items={[{ name: collectionTitle, url: "/collections/" + handle }]}
         />
-        <div className="flex flex-col lg:grid grid-cols-2 gap-10 py-6 relative">
-          <div className="flex flex-col">
-            <ImageGallery images={product.images} />
-          </div>
-          <div
-            className="rounded-xl shadow-2xl px-8 py-4 sm:sticky sm:top-20 flex flex-col gap-y-12"
-            ref={info}
-          >
-            <ProductInfo product={product} />
-            {/* <ProductTabs product={product} /> */}
-          </div>
-        </div>
-        <div className=" my-16 px-6 sm:px-8 sm:my-32">
-          <RelatedProducts product={product} />
-        </div>
-        <MobileActions product={product} show={!inView} />
+        <ProductForm product={product} />
       </div>
-      {/* </form>
-      </FormProvider> */}
     </ProductProvider>
   )
 }

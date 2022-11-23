@@ -21,30 +21,30 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
 
   return (
     <ProductSection index={1} title={"Select " + title} open selected={current}>
-      <div className="flex flex-col gap-y-3">
-        {/* <label className="block">SELECT {title.toUpperCase()}</label> */}
-        <div className="flex gap-4 flex-wrap">
-          {filteredOptions.map((v) => {
-            return (
-              <div
-                key={v}
-                onClick={() => updateOption({ [option.id]: v })}
-                className={clsx(
-                  "flex-1 flex flex-col items-center justify-center w-[calc(33%_-_1rem)] rounded-xl h-[60px] text-lg font-semibold bg-[color:var(--secondary-bg-color)] cursor-pointer",
-                  {
-                    "!bg-[#9C1AA8] !text-white": v === current,
-                    "border-2 hover:border-2 hover:border-[#9C1AA8] hover:border-solid":
-                      v !== current,
-                  }
-                )}
-              >
-                {v}
-                {/* <div className=" mt-1">${s.price}</div> */}
-              </div>
-            )
-          })}
-        </div>
+      {/* <div className="flex flex-col gap-y-3"> */}
+      {/* <label className="block">SELECT {title.toUpperCase()}</label> */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
+        {filteredOptions.map((v) => {
+          return (
+            <div
+              key={v}
+              onClick={() => updateOption({ [option.id]: v })}
+              className={clsx(
+                "flex-1 whitespace-nowrap flex flex-col items-center justify-center rounded-xl h-[60px] text-lg font-semibold bg-[color:var(--secondary-bg-color)] cursor-pointer",
+                {
+                  "!bg-[#9C1AA8] !text-white": v === current,
+                  "border-2 hover:border-2 hover:border-[#9C1AA8] hover:border-solid":
+                    v !== current,
+                }
+              )}
+            >
+              {v}
+              {/* <div className=" mt-1">${s.price}</div> */}
+            </div>
+          )
+        })}
       </div>
+      {/* </div> */}
     </ProductSection>
   )
 }

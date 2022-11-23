@@ -18,7 +18,7 @@ const Cookie = () => {
         }
       )}
     >
-      <h1 className="text-2xl text-center">Want a cookie? 🍪</h1>
+      {/* <h1 className="text-2xl text-center">Want a cookie? 🍪</h1>
       <div className="text-lg mt-2">
         This website stores information about you via the deposit of cookies in
         order to measure the audience of the site. This navigation data is
@@ -27,8 +27,7 @@ const Cookie = () => {
       <div className="flex justify-around mt-4 text-lg underline">
         <button>Do Not Sell My Personal Information</button>
         <button className="decoration-[red]">Accept All Cookie</button>
-        {/* <Button className="ml-2">Accept All Cookie</Button> */}
-      </div>
+      </div> */}
     </div>
   )
 }

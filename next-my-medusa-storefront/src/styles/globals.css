@@ -20,7 +20,7 @@
 
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-base;
+    @apply -translate-y-2 text-xsmall-regular;
   }
 
   input:focus ~ label {
@@ -36,8 +36,8 @@
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    /* border: 1px solid #212121;
-    -webkit-text-fill-color: #212121; */
+    border: 1px solid #212121;
+    -webkit-text-fill-color: #212121;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
   }
@@ -51,11 +51,8 @@
 }
 
 @layer components {
-  .layout-base {
-    @apply min-h-screen max-w-screen-2xl mx-auto py-12 px-4 sm:py-8 sm:px-6 lg:px-12;
-  }
   .content-container {
-    @apply max-w-[1500px] w-full mx-auto px-8
+    @apply max-w-[1440px] w-full mx-auto px-4 md:px-8
   }
 
   .contrast-btn {
@@ -114,12 +111,6 @@
     @apply text-[36px] leading-[48px] font-semibold;
   }
 }
-/* @import url('https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap') */
-/* @import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap'); */
-
-/* body {
-    user-select: none;
-} */
 
 :root {
   --default-pl: max(25px, calc((100% - 1280px) / 2 + 25px));
@@ -136,624 +127,625 @@
   --secondary-bg-color: rgba(247,104,71,.2); /*#e6e6e6;*/
 }
 
+
 .font-DIN {
-    font-family: DIN-alternate-bold;
+  font-family: DIN-alternate-bold;
 }
 
 @font-face {
-    font-family: DIN-alternate-bold;
-    src: url("/fonts/DINAlternateBold.ttf")
+  font-family: DIN-alternate-bold;
+  src: url("/fonts/DINAlternateBold.ttf")
 }
 
 @font-face {
-  font-family: sign-Alexa;
-  src: url("/custom-fonts/Alexa.ttf")
+font-family: sign-Alexa;
+src: url("/custom-fonts/Alexa.ttf")
 }
 .sign-text-font-Alexa{
-    font-family: sign-Alexa;
+  font-family: sign-Alexa;
 }
 .sign-demo-content .sign-text-font-Alexa {
-    font-size: 80px;
-    line-height: 94%;
+  font-size: 80px;
+  line-height: 94%;
 }
 .sign-text-font-Alexa .sign-font-name{
-    font-size: 25px !important;
+  font-size: 25px !important;
 }
 
 @font-face {
-    font-family: sign-Amanda;
-    src: url("/custom-fonts/Amanda.ttf")
+  font-family: sign-Amanda;
+  src: url("/custom-fonts/Amanda.ttf")
 }
 .sign-text-font-Amanda{
-    font-family: sign-Amanda;
+  font-family: sign-Amanda;
 }
 .sign-demo-content .sign-text-font-Amanda {
-    font-size: 80px;
-    line-height: 130%;
+  font-size: 80px;
+  line-height: 130%;
 }
 .sign-text-font-Amanda .sign-font-name{
-    font-size: 28px !important;
+  font-size: 28px !important;
 }
 
 @font-face {
-    font-family: sign-Amsterdam;
-    src: url("/custom-fonts/Amsterdam.ttf")
+  font-family: sign-Amsterdam;
+  src: url("/custom-fonts/Amsterdam.ttf")
 }
 .sign-text-font-Amsterdam{
-    font-family: sign-Amsterdam;
+  font-family: sign-Amsterdam;
 }
 .sign-demo-content .sign-text-font-Amsterdam {
-    font-size: 88px;
-    line-height: 110%;
+  font-size: 88px;
+  line-height: 110%;
 }
 .sign-text-font-Amsterdam .sign-font-name{
-    font-size: 25px !important;
+  font-size: 25px !important;
 }
 
 @font-face {
-    font-family: sign-Austin;
-    src: url("/custom-fonts/Austin.ttf")
+  font-family: sign-Austin;
+  src: url("/custom-fonts/Austin.ttf")
 }
 .sign-text-font-Austin{
-    font-family: sign-Austin;
-    margin-top: -6px !important;
+  font-family: sign-Austin;
+  margin-top: -6px !important;
 }
 .sign-demo-content .sign-text-font-Austin {
-    font-size: 115px;
-    line-height: 80%;
+  font-size: 115px;
+  line-height: 80%;
 }
 .sign-text-font-Austin .sign-font-name{
-    font-size: 39px !important;
-    margin-top: -9px;
+  font-size: 39px !important;
+  margin-top: -9px;
 }
 
 @font-face {
-    font-family: sign-Avante;
-    src: url("/custom-fonts/Avante.ttf")
+  font-family: sign-Avante;
+  src: url("/custom-fonts/Avante.ttf")
 }
 .sign-text-font-Avante{
-    font-family: sign-Avante;
+  font-family: sign-Avante;
 }
 .sign-demo-content .sign-text-font-Avante {
-    font-size: 75px;
-    line-height: 98%;
+  font-size: 75px;
+  line-height: 98%;
 }
 .sign-text-font-Avante .sign-font-name{
-    font-size: 22px !important;
+  font-size: 22px !important;
 }
 
 @font-face {
-    font-family: sign-Barcelona;
-    src: url("/custom-fonts/Barcelona.ttf")
+  font-family: sign-Barcelona;
+  src: url("/custom-fonts/Barcelona.ttf")
 }
 .sign-text-font-Barcelona{
-    font-family: sign-Barcelona;
+  font-family: sign-Barcelona;
 }
 .sign-demo-content .sign-text-font-Barcelona {
-    font-size: 77px;
-    line-height: 158%;
+  font-size: 77px;
+  line-height: 158%;
 }
 .sign-text-font-Barcelona .sign-font-name{
-    font-size: 21px !important;
+  font-size: 21px !important;
 }
 
 @font-face {
-    font-family: sign-Bayview;
-    src: url("/custom-fonts/Bayview.ttf")
+  font-family: sign-Bayview;
+  src: url("/custom-fonts/Bayview.ttf")
 }
 .sign-text-font-Bayview{
-    font-family: sign-Bayview;
+  font-family: sign-Bayview;
 }
 .sign-demo-content .sign-text-font-Bayview {
-    font-size: 105px;
-    line-height: 94%;
+  font-size: 105px;
+  line-height: 94%;
 }
 .sign-text-font-Bayview .sign-font-name{
-    font-size: 34px !important;
+  font-size: 34px !important;
 }
 
 @font-face {
-    font-family: sign-Beachfront;
-    src: url("/custom-fonts/Beachfront.ttf")
+  font-family: sign-Beachfront;
+  src: url("/custom-fonts/Beachfront.ttf")
 }
 .sign-text-font-Beachfront{
-    font-family: sign-Beachfront;
+  font-family: sign-Beachfront;
 }
 .sign-demo-content .sign-text-font-Beachfront {
-    font-size: 73px;
-    line-height: 130%;
+  font-size: 73px;
+  line-height: 130%;
 }
 .sign-text-font-Beachfront .sign-font-name{
-    font-size: 23px !important;
+  font-size: 23px !important;
 }
 
 @font-face {
-    font-family: sign-Buttercup;
-    src: url("/custom-fonts/Buttercup.ttf")
+  font-family: sign-Buttercup;
+  src: url("/custom-fonts/Buttercup.ttf")
 }
 .sign-text-font-Buttercup{
-    font-family: sign-Buttercup;
+  font-family: sign-Buttercup;
 }
 .sign-demo-content .sign-text-font-Buttercup {
-    font-size: 120px;
-    line-height: 95%;
+  font-size: 120px;
+  line-height: 95%;
 }
 .sign-text-font-Buttercup .sign-font-name{
-    font-size: 32px !important;
+  font-size: 32px !important;
 }
 
 @font-face {
-    font-family: sign-Chelsea;
-    src: url("/custom-fonts/Chelsea.ttf")
+  font-family: sign-Chelsea;
+  src: url("/custom-fonts/Chelsea.ttf")
 }
 .sign-text-font-Chelsea{
-    font-family: sign-Chelsea;
+  font-family: sign-Chelsea;
 }
 .sign-demo-content .sign-text-font-Chelsea {
-    font-size: 110px;
-    line-height: 110%;
+  font-size: 110px;
+  line-height: 110%;
 }
 .sign-text-font-Chelsea .sign-font-name{
-    font-size: 37px !important;
+  font-size: 37px !important;
 }
 
 @font-face {
-    font-family: sign-ClassicType;
-    src: url("/custom-fonts/ClassicType.ttf")
+  font-family: sign-ClassicType;
+  src: url("/custom-fonts/ClassicType.ttf")
 }
 .sign-text-font-ClassicType{
-    font-family: sign-ClassicType;
+  font-family: sign-ClassicType;
 }
 .sign-demo-content .sign-text-font-ClassicType {
-    font-size: 65px;
-    line-height: 103%;
+  font-size: 65px;
+  line-height: 103%;
 }
 .sign-text-font-ClassicType .sign-font-name{
-    font-size: 19px !important;
+  font-size: 19px !important;
 }
 
 @font-face {
-    font-family: sign-Freehand;
-    src: url("/custom-fonts/Freehand.ttf")
+  font-family: sign-Freehand;
+  src: url("/custom-fonts/Freehand.ttf")
 }
 .sign-text-font-Freehand{
-    font-family: sign-Freehand;
+  font-family: sign-Freehand;
 }
 .sign-demo-content .sign-text-font-Freehand {
-    font-size: 90px;
-    /*line-height: 125%;*/
-    line-height: 120%;
+  font-size: 90px;
+  /*line-height: 125%;*/
+  line-height: 120%;
 }
 .sign-text-font-Freehand .sign-font-name{
-    font-size: 30px !important;
-    margin-top: -9px;
+  font-size: 30px !important;
+  margin-top: -9px;
 }
 
 @font-face {
-    font-family: sign-Freespirit;
-    src: url("/custom-fonts/Freespirit.ttf")
+  font-family: sign-Freespirit;
+  src: url("/custom-fonts/Freespirit.ttf")
 }
 .sign-text-font-Freespirit{
-    font-family: sign-Freespirit;
+  font-family: sign-Freespirit;
 }
 .sign-demo-content .sign-text-font-Freespirit {
-    font-size: 47px;
-    /*line-height: 247%;*/
-    line-height: 200%;
-    padding-top: 25px !important;
+  font-size: 47px;
+  /*line-height: 247%;*/
+  line-height: 200%;
+  padding-top: 25px !important;
 }
 .sign-text-font-Freespirit .sign-font-name{
-    font-size: 16px !important;
+  font-size: 16px !important;
 }
 
 @font-face {
-    font-family: sign-Greenworld;
-    src: url("/custom-fonts/Greenworld.ttf")
+  font-family: sign-Greenworld;
+  src: url("/custom-fonts/Greenworld.ttf")
 }
 .sign-text-font-Greenworld{
-    font-family: sign-Greenworld;
+  font-family: sign-Greenworld;
 }
 .sign-demo-content .sign-text-font-Greenworld {
-    font-size: 100px;
-    line-height: 88%;
+  font-size: 100px;
+  line-height: 88%;
 }
 .sign-text-font-Greenworld .sign-font-name{
-    font-size: 31px !important;
+  font-size: 31px !important;
 }
 
 @font-face {
-    font-family: sign-Hamillton;
-    src: url("/custom-fonts/Hamillton.ttf")
+  font-family: sign-Hamillton;
+  src: url("/custom-fonts/Hamillton.ttf")
 }
 .sign-text-font-Hamillton{
-    font-family: sign-Hamillton;
+  font-family: sign-Hamillton;
 }
 .sign-demo-content .sign-text-font-Hamillton {
-    font-size: 95px;
-    line-height: 140%;
+  font-size: 95px;
+  line-height: 140%;
 }
 .sign-text-font-Hamillton .sign-font-name{
-    font-size: 29px !important;
-    margin-top: 8px;
+  font-size: 29px !important;
+  margin-top: 8px;
 }
 
 @font-face {
-    font-family: sign-LoveNeon;
-    src: url("/custom-fonts/LoveNeon.ttf")
+  font-family: sign-LoveNeon;
+  src: url("/custom-fonts/LoveNeon.ttf")
 }
 .sign-text-font-LoveNeon{
-    font-family: sign-LoveNeon;
+  font-family: sign-LoveNeon;
 }
 .sign-demo-content .sign-text-font-LoveNeon {
-    font-size: 60px;
-    line-height: 95%;
+  font-size: 60px;
+  line-height: 95%;
 }
 .sign-text-font-LoveNeon .sign-font-name{
-    font-size: 18px !important;
+  font-size: 18px !important;
 }
 
 @font-face {
-    font-family: sign-Marquee;
-    src: url("/custom-fonts/Marquee.ttf")
+  font-family: sign-Marquee;
+  src: url("/custom-fonts/Marquee.ttf")
 }
 .sign-text-font-Marquee{
-    font-family: sign-Marquee;
+  font-family: sign-Marquee;
 }
 .sign-demo-content .sign-text-font-Marquee {
-    font-size: 85px;
-    line-height: 100%;
+  font-size: 85px;
+  line-height: 100%;
 }
 .sign-text-font-Marquee .sign-font-name{
-    font-size: 22px !important;
+  font-size: 22px !important;
 }
 
 @font-face {
-    font-family: sign-Mayfair;
-    src: url("/custom-fonts/Mayfair.ttf")
+  font-family: sign-Mayfair;
+  src: url("/custom-fonts/Mayfair.ttf")
 }
 .sign-text-font-Mayfair{
-    font-family: sign-Mayfair;
+  font-family: sign-Mayfair;
 }
 .sign-demo-content .sign-text-font-Mayfair {
-    font-size: 76px;
-    line-height: 97%;
+  font-size: 76px;
+  line-height: 97%;
 }
 .sign-text-font-Mayfair .sign-font-name{
-    font-size: 23px !important;
+  font-size: 23px !important;
 }
 
 @font-face {
-    font-family: sign-Melbourne;
-    src: url("/custom-fonts/Melbourne.ttf")
+  font-family: sign-Melbourne;
+  src: url("/custom-fonts/Melbourne.ttf")
 }
 .sign-text-font-Melbourne{
-    font-family: sign-Melbourne;
+  font-family: sign-Melbourne;
 }
 .sign-demo-content .sign-text-font-Melbourne {
-    font-size: 70px;
-    line-height: 105%;
+  font-size: 70px;
+  line-height: 105%;
 }
 .sign-text-font-Melbourne .sign-font-name{
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 @font-face {
-    font-family: sign-Monaco;
-    src: url("/custom-fonts/Monaco.ttf")
+  font-family: sign-Monaco;
+  src: url("/custom-fonts/Monaco.ttf")
 }
 .sign-text-font-Monaco{
-    font-family: sign-Monaco;
+  font-family: sign-Monaco;
 }
 .sign-demo-content .sign-text-font-Monaco {
-    font-size: 70px;
-    line-height: 89%;
+  font-size: 70px;
+  line-height: 89%;
 }
 .sign-text-font-Monaco .sign-font-name{
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 @font-face {
-    font-family: sign-NeonGlow;
-    src: url("/custom-fonts/NeonGlow.ttf")
+  font-family: sign-NeonGlow;
+  src: url("/custom-fonts/NeonGlow.ttf")
 }
 .sign-text-font-NeonGlow{
-    font-family: sign-NeonGlow;
+  font-family: sign-NeonGlow;
 }
 .sign-demo-content .sign-text-font-NeonGlow {
-    font-size: 75px;
-    line-height: 102%;
+  font-size: 75px;
+  line-height: 102%;
 }
 .sign-text-font-NeonGlow .sign-font-name{
-    font-size: 22px !important;
+  font-size: 22px !important;
 }
 
 @font-face {
-    font-family: sign-NeonLite;
-    src: url("/custom-fonts/NeonLite.ttf")
+  font-family: sign-NeonLite;
+  src: url("/custom-fonts/NeonLite.ttf")
 }
 .sign-text-font-NeonLite{
-    font-family: sign-NeonLite;
+  font-family: sign-NeonLite;
 }
 .sign-demo-content .sign-text-font-NeonLite {
-    font-size: 62px;
-    line-height: 96%;
+  font-size: 62px;
+  line-height: 96%;
 }
 .sign-text-font-NeonLite .sign-font-name{
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 @font-face {
-    font-family: sign-Neonscript;
-    src: url("/custom-fonts/Neonscript.ttf")
+  font-family: sign-Neonscript;
+  src: url("/custom-fonts/Neonscript.ttf")
 }
 .sign-text-font-Neonscript{
-    font-family: sign-Neonscript;
+  font-family: sign-Neonscript;
 }
 .sign-demo-content .sign-text-font-Neonscript {
-    font-size: 95px;
-    line-height: 145%;
+  font-size: 95px;
+  line-height: 145%;
 }
 .sign-text-font-Neonscript .sign-font-name{
-    font-size: 27px !important;
+  font-size: 27px !important;
 }
 
 @font-face {
-    font-family: sign-Neontrace;
-    src: url("/custom-fonts/Neontrace.ttf")
+  font-family: sign-Neontrace;
+  src: url("/custom-fonts/Neontrace.ttf")
 }
 .sign-text-font-Neontrace{
-    font-family: sign-Neontrace;
+  font-family: sign-Neontrace;
 }
 .sign-demo-content .sign-text-font-Neontrace {
-    font-size: 62px;
-    line-height: 103%;
+  font-size: 62px;
+  line-height: 103%;
 }
 .sign-text-font-Neontrace .sign-font-name{
-    font-size: 17px !important;
+  font-size: 17px !important;
 }
 
 @font-face {
-    font-family: sign-NeoTokyo;
-    src: url("/custom-fonts/NeoTokyo.ttf")
+  font-family: sign-NeoTokyo;
+  src: url("/custom-fonts/NeoTokyo.ttf")
 }
 .sign-text-font-NeoTokyo{
-    font-family: sign-NeoTokyo;
+  font-family: sign-NeoTokyo;
 }
 .sign-demo-content .sign-text-font-NeoTokyo {
-    font-size: 73px;
-    line-height: 110%;
+  font-size: 73px;
+  line-height: 110%;
 }
 .sign-text-font-NeoTokyo .sign-font-name{
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 @font-face {
-    font-family: sign-Nevada;
-    src: url("/custom-fonts/Nevada.ttf")
+  font-family: sign-Nevada;
+  src: url("/custom-fonts/Nevada.ttf")
 }
 .sign-text-font-Nevada{
-    font-family: sign-Nevada;
+  font-family: sign-Nevada;
 }
 .sign-demo-content .sign-text-font-Nevada {
-    font-size: 100px;
-    line-height: 95%;
+  font-size: 100px;
+  line-height: 95%;
 }
 .sign-text-font-Nevada .sign-font-name{
-    font-size: 32px !important;
-    font-weight: bold !important;
+  font-size: 32px !important;
+  font-weight: bold !important;
 }
 
 @font-face {
-    font-family: sign-NewCursive;
-    src: url("/custom-fonts/NewCursive.ttf")
+  font-family: sign-NewCursive;
+  src: url("/custom-fonts/NewCursive.ttf")
 }
 .sign-text-font-NewCursive{
-    font-family: sign-NewCursive;
+  font-family: sign-NewCursive;
 }
 .sign-demo-content .sign-text-font-NewCursive {
-    font-size: 100px;
-    line-height: 88%;
+  font-size: 100px;
+  line-height: 88%;
 }
 .sign-text-font-NewCursive .sign-font-name{
-    font-size: 30px !important;
+  font-size: 30px !important;
 }
 
 @font-face {
-    font-family: sign-Northshore;
-    src: url("/custom-fonts/Northshore.ttf")
+  font-family: sign-Northshore;
+  src: url("/custom-fonts/Northshore.ttf")
 }
 .sign-text-font-Northshore{
-    font-family: sign-Northshore;
+  font-family: sign-Northshore;
 }
 .sign-demo-content .sign-text-font-Northshore {
-    font-size: 93px;
-    line-height: 142%;
+  font-size: 93px;
+  line-height: 142%;
 }
 .sign-text-font-Northshore .sign-font-name{
-    font-size: 28px !important;
-    margin-top: 14px;
+  font-size: 28px !important;
+  margin-top: 14px;
 }
 
 @font-face {
-    font-family: sign-Rocket;
-    src: url("/custom-fonts/Rocket.ttf")
+  font-family: sign-Rocket;
+  src: url("/custom-fonts/Rocket.ttf")
 }
 .sign-text-font-Rocket{
-    font-family: sign-Rocket;
+  font-family: sign-Rocket;
 }
 .sign-demo-content .sign-text-font-Rocket {
-    font-size: 50px;
-    line-height: 165%;
+  font-size: 50px;
+  line-height: 165%;
 }
 .sign-text-font-Rocket .sign-font-name{
-    font-size: 17px !important;
+  font-size: 17px !important;
 }
 
 @font-face {
-    font-family: sign-Royalty;
-    src: url("/custom-fonts/Royalty.ttf")
+  font-family: sign-Royalty;
+  src: url("/custom-fonts/Royalty.ttf")
 }
 .sign-text-font-Royalty{
-    font-family: sign-Royalty;
+  font-family: sign-Royalty;
 }
 .sign-demo-content .sign-text-font-Royalty {
-    font-size: 68px;
-    line-height: 160%;
+  font-size: 68px;
+  line-height: 160%;
 }
 .sign-text-font-Royalty .sign-font-name{
-    font-size: 24px !important;
-    margin-top: -11px;
+  font-size: 24px !important;
+  margin-top: -11px;
 }
 
 @font-face {
-    font-family: sign-SciFi;
-    src: url("/custom-fonts/SciFi.ttf")
+  font-family: sign-SciFi;
+  src: url("/custom-fonts/SciFi.ttf")
 }
 .sign-text-font-SciFi{
-    font-family: sign-SciFi;
+  font-family: sign-SciFi;
 }
 .sign-demo-content .sign-text-font-SciFi {
-    font-size: 50px;
-    line-height: 111%;
+  font-size: 50px;
+  line-height: 111%;
 }
 .sign-text-font-SciFi .sign-font-name{
-    font-size: 22px !important;
+  font-size: 22px !important;
 }
 
 @font-face {
-    font-family: sign-Signature;
-    src: url("/custom-fonts/Signature.ttf")
+  font-family: sign-Signature;
+  src: url("/custom-fonts/Signature.ttf")
 }
 .sign-text-font-Signature{
-    font-family: sign-Signature;
+  font-family: sign-Signature;
 }
 .sign-demo-content .sign-text-font-Signature {
-    font-size: 100px;
-    line-height: 98%;
+  font-size: 100px;
+  line-height: 98%;
 }
 .sign-text-font-Signature .sign-font-name{
-    font-size: 32px !important;
-    margin-top: -3px;
+  font-size: 32px !important;
+  margin-top: -3px;
 }
 
 @font-face {
-    font-family: sign-Typewriter;
-    src: url("/custom-fonts/Typewriter.ttf")
+  font-family: sign-Typewriter;
+  src: url("/custom-fonts/Typewriter.ttf")
 }
 .sign-text-font-Typewriter{
-    font-family: sign-Typewriter;
+  font-family: sign-Typewriter;
 }
 .sign-demo-content .sign-text-font-Typewriter {
-    font-size: 70px;
-    line-height: 95%;
+  font-size: 70px;
+  line-height: 95%;
 }
 .sign-text-font-Typewriter .sign-font-name{
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 @font-face {
-    font-family: sign-Vintage;
-    src: url("/custom-fonts/Vintage.ttf")
+  font-family: sign-Vintage;
+  src: url("/custom-fonts/Vintage.ttf")
 }
 .sign-text-font-Vintage{
-    font-family: sign-Vintage;
+  font-family: sign-Vintage;
 }
 .sign-demo-content .sign-text-font-Vintage {
-    font-size: 75px;
-    line-height: 108%;
+  font-size: 75px;
+  line-height: 108%;
 }
 .sign-text-font-Vintage .sign-font-name{
-    font-size: 22px !important;
+  font-size: 22px !important;
 }
 
 @font-face {
-    font-family: sign-Waikiki;
-    src: url("/custom-fonts/Waikiki.ttf")
+  font-family: sign-Waikiki;
+  src: url("/custom-fonts/Waikiki.ttf")
 }
 .sign-text-font-Waikiki{
-    font-family: sign-Waikiki;
+  font-family: sign-Waikiki;
 }
 .sign-demo-content .sign-text-font-Waikiki {
-    font-size: 70px;
-    line-height: 88%;
+  font-size: 70px;
+  line-height: 88%;
 }
 .sign-text-font-Waikiki .sign-font-name{
-    font-size: 22px !important;
+  font-size: 22px !important;
 }
 
 @font-face {
-    font-family: sign-WildScript;
-    src: url("/custom-fonts/WildScript.ttf")
+  font-family: sign-WildScript;
+  src: url("/custom-fonts/WildScript.ttf")
 }
 .sign-text-font-WildScript{
-    font-family: sign-WildScript;
+  font-family: sign-WildScript;
 }
 .sign-demo-content .sign-text-font-WildScript {
-    font-size: 105px;
-    /*line-height: 115%;*/
-    line-height: 100%;
+  font-size: 105px;
+  /*line-height: 115%;*/
+  line-height: 100%;
 }
 .sign-text-font-WildScript .sign-font-name{
-    font-size: 28px !important;
+  font-size: 28px !important;
 }
 
 @font-face {
-    font-family: sign-BatmanForever;
-    src: url("/custom-fonts/BatmanForever.ttf")
+  font-family: sign-BatmanForever;
+  src: url("/custom-fonts/BatmanForever.ttf")
 }
 .sign-text-font-Batman{
-    font-family: sign-BatmanForever;
+  font-family: sign-BatmanForever;
 }
 .sign-demo-content .sign-text-font-Batman {
-    font-size: 60px;
-    line-height: 85%;
+  font-size: 60px;
+  line-height: 85%;
 }
 .sign-text-font-Batman .sign-font-name{
-    font-size: 23px !important;
+  font-size: 23px !important;
 }
 
 @font-face {
-    font-family: sign-BrittanySignature;
-    src: url("/custom-fonts/BrittanySignature.ttf")
+  font-family: sign-BrittanySignature;
+  src: url("/custom-fonts/BrittanySignature.ttf")
 }
 .sign-text-font-BrittanySignature{
-    font-family: sign-BrittanySignature;
+  font-family: sign-BrittanySignature;
 }
 .sign-demo-content .sign-text-font-BrittanySignature {
-    font-size: 65px;
-    line-height: 160%;
+  font-size: 65px;
+  line-height: 160%;
 }
 .sign-text-font-BrittanySignature .sign-font-name{
-    font-size: 17px !important;
+  font-size: 17px !important;
 }
 
 @font-face {
-    font-family: sign-JennaSue;
-    src: url("/custom-fonts/JennaSue.ttf")
+  font-family: sign-JennaSue;
+  src: url("/custom-fonts/JennaSue.ttf")
 }
 .sign-text-font-JennaSue{
-    font-family: sign-JennaSue;
+  font-family: sign-JennaSue;
 }
 .sign-demo-content .sign-text-font-JennaSue {
-    font-size: 110px;
-    line-height: 85%;
+  font-size: 110px;
+  line-height: 85%;
 }
 .sign-text-font-JennaSue .sign-font-name{
-    font-size: 37px !important;
+  font-size: 37px !important;
 }
 
 @font-face {
-    font-family: photograph-signature;
-    src: url("/custom-fonts/PhotographSignature.ttf")
+  font-family: photograph-signature;
+  src: url("/custom-fonts/PhotographSignature.ttf")
 }
 .sign-text-font-PhotographSignature{
-    font-family: photograph-signature;
+  font-family: photograph-signature;
 }
 .sign-demo-content .sign-text-font-PhotographSignature {
-    font-size: 115px;
-    /*line-height: 70%;*/
-    line-height: 115%;
+  font-size: 115px;
+  /*line-height: 70%;*/
+  line-height: 115%;
 }
 .sign-text-font-PhotographSignature .sign-font-name{
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
